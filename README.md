@@ -1,1 +1,1 @@
-BICI sensors project
+bici_sensors
