@@ -9,12 +9,11 @@
  *
  * ========================================
 */
-#include "project.h"
 #include "comm_driver.h"
 #include <stdio.h>
 #include <string.h>
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 uint8 sensorValueBuffer[BUFFER_SIZE];
 
@@ -57,11 +56,19 @@ int main(void)
      /* Start the I2C Master */
     I2CM_Start();
     
+    //init sensorList structs
+    for(uint8 i=0; i<NUMBER_OF_SENSORS; ++i)
+    {
+        sensorList[i].i2cAddr = sensorAddrList[i];
+        sensorList[i].nbTaxels = nbTaxelList[i];
+    }
+    
+    
     for(;;)
     {
         
         /* Read response packet from the slave */
-        if (TRANSFER_CMPLT == readSensor(I2C_SLAVE_ADDR, 25))
+        if (TRANSFER_CMPLT == readSensor(0x08, 25))
         {
             // Send it through UART
             comm_putmsg((uint8*)sensorValueBuffer, BUFFER_SIZE);
