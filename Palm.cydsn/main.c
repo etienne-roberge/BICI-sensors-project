@@ -49,11 +49,12 @@ int main()
                 /* add custom tasks to execute when touch detected */
             //}
             CapSense_ScanAllWidgets(); /* Start next scan */
-            
-            //for (unsigned int i=0; i<6; ++i)
-            //{
-            //    i2cReadBuffer[i] = CapSense_dsRam.snsList.button0[i].raw[0];
-            //}
+
+           // for (unsigned int i=0; i<6; ++i)
+           // {
+           //     i2cReadBuffer[i] = CapSense_dsRam.snsList.button0[i].raw[0];
+           // }
+
         }
     }
 }

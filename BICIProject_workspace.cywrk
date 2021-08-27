@@ -25,6 +25,9 @@
 <v>.\BackOfHand.cydsn\BackOfHand.cyprj</v>
 <v>.\SensorHub.cydsn\SensorHub.cyprj</v>
 <v>.\FingerTip.cydsn\FingerTip.cyprj</v>
+<v>.\FingerBig.cydsn\FingerBig.cyprj</v>
+<v>.\Palm.cydsn\Palm.cyprj</v>
+<v>.\I2C_Bootloader.cydsn\I2C_Bootloader.cyprj</v>
 <v>.\FingerSmall.cydsn\FingerSmall.cyprj</v>
 </projects>
 <workspace_id v="57ba9a7e-76d1-4fbe-bd6e-3f66831b76dd" />
