@@ -1,6 +1,5 @@
 /* ========================================
  *
-//Hello
  * Copyright YOUR COMPANY, THE YEAR
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
