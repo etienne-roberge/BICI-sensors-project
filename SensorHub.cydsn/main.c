@@ -24,8 +24,29 @@ uint32 readSensor(uint16 sensorAddress, uint8 sensorSize)
     memset(sensorValueBuffer, 0, BUFFER_SIZE);
     (void) I2CM_I2CMasterClearStatus();
     
+    uint8 slaveReadyFlag[2];
+    
     uint32 commFlag = I2CM_I2CMasterReadBuf(sensorAddress,
-                                    sensorValueBuffer, sensorSize*2,
+                                    slaveReadyFlag, 2,
+                                    I2CM_I2C_MODE_COMPLETE_XFER);
+    
+    if(I2CM_I2C_MSTR_NO_ERROR ==  commFlag)
+    {
+        /* If I2C read started without errors, 
+        / wait until master complete read transfer */
+        while(0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_RD_CMPLT))
+        {
+            /* Wait */
+        }
+        
+        if(slaveReadyFlag[1] != 1)
+        {
+           return SLAVE_NOT_READY;
+        }
+    }
+    
+    commFlag = I2CM_I2CMasterReadBuf(sensorAddress,
+                                    sensorValueBuffer, sensorSize*2+1,
                                     I2CM_I2C_MODE_COMPLETE_XFER);
     
     if(I2CM_I2C_MSTR_NO_ERROR ==  commFlag)
@@ -42,6 +63,41 @@ uint32 readSensor(uint16 sensorAddress, uint8 sensorSize)
         {
             uint32 sizeRead = I2CM_I2CMasterGetReadBufSize();
             status = TRANSFER_CMPLT;
+        }
+    }
+
+    return (status);
+}
+
+uint32 startCapSenseAcquisition()
+{
+    uint8  buffer[BUFFER_SIZE] = {1};
+    uint8 test[1] = {1};
+    uint32 status = TRANSFER_ERROR;
+
+    (void) I2CM_I2CMasterClearStatus();
+    
+    /* Start I2C write and check status*/
+    if(I2CM_I2C_MSTR_NO_ERROR == I2CM_I2CMasterWriteBuf(0x00,
+                                    test, 1,
+                                    I2CM_I2C_MODE_COMPLETE_XFER))
+    {
+        /*If I2C write started without errors, 
+        / wait until I2C Master completes write transfer 
+        */
+        while (0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_WR_CMPLT))
+        {
+            /* Wait */
+        }
+        
+        /* Display transfer status */
+        if (0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_ERR_XFER))
+        {
+            /* Check if all bytes was written */
+            if (I2CM_I2CMasterGetWriteBufSize() == BUFFER_SIZE)
+            {
+                status = TRANSFER_CMPLT;
+            }
         }
     }
 
@@ -67,8 +123,11 @@ int main(void)
     for(;;)
     {
         
+        //Send acquisition command
+        startCapSenseAcquisition();
+        
         /* Read response packet from the slave */
-        if (TRANSFER_CMPLT == readSensor(0x08, 25))
+        if (TRANSFER_CMPLT == readSensor(0x16, 25))
         {
             // Send it through UART
             comm_putmsg((uint8*)sensorValueBuffer, BUFFER_SIZE);

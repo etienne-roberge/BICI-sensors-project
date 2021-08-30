@@ -20,6 +20,7 @@
 #define PACKET_SIZE         (50u)
 /* Transfer statuses */
 #define TRANSFER_CMPLT      (0x00u)
+#define SLAVE_NOT_READY     (0x01u)
 #define TRANSFER_ERROR      (0xFFu)
 
 typedef struct
