@@ -23,6 +23,9 @@
 #define SLAVE_NOT_READY     (0x01u)
 #define TRANSFER_ERROR      (0xFFu)
 
+#define NOT_READY           (0)
+#define READY               (1)
+
 typedef struct
 {
     uint16 i2cAddr;

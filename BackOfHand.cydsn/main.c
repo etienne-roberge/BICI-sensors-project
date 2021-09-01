@@ -14,7 +14,7 @@
 #include <main.h>
 
 #define TAXEL_COUNT         (25)
-#define READY_READ          (1)
+#define READY_READ          (0xFFFE)
 #define WAITING_FOR_MASTER  (0)
 #define SLAVE_STATE_BYTE    (0)
 
@@ -55,6 +55,7 @@ int main(void)
                 /* Check the start and end of packet markers */
                 if(i2cWriteBuffer[0] == 1)
                 {   
+                    i2cReadBuffer[SLAVE_STATE_BYTE] = WAITING_FOR_MASTER;
                     readCapSenseFlag = 1;
                     i2cWriteBuffer[0] = 0 ;
                 }
@@ -87,10 +88,10 @@ int main(void)
             }
         }
         
+        
         /* Read complete: expose buffer to master */
-        if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_RD_CMPLT))
+        if (0u != (tt & I2C_I2C_SSTAT_RD_CMPLT))
         {
-            i2cReadBuffer[SLAVE_STATE_BYTE] = WAITING_FOR_MASTER;
             /* Clear the slave read buffer and status */
             I2C_I2CSlaveClearReadBuf();
             (void) I2C_I2CSlaveClearReadStatus();

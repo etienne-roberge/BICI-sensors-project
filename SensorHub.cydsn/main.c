@@ -15,71 +15,87 @@
 #include <stdlib.h>
 #include "main.h"
 
+uint8 readTryCounter = 0;
+
 uint8 sensorValueBuffer[BUFFER_SIZE];
 
-uint32 readSensor(uint16 sensorAddress, uint8 sensorSize)
+uint32 checkIfSensorReady(uint16 sensorAddress)
 {
-    uint32 status = TRANSFER_ERROR;
-    
-    memset(sensorValueBuffer, 0, BUFFER_SIZE);
+    uint32 status = NOT_READY;
+    uint8 slaveReadyFlag[2];
     (void) I2CM_I2CMasterClearStatus();
     
-    uint8 slaveReadyFlag[2];
-    
-    uint32 commFlag = I2CM_I2CMasterReadBuf(sensorAddress,
+    if(I2CM_I2C_MSTR_NO_ERROR ==  I2CM_I2CMasterReadBuf(sensorAddress,
                                     slaveReadyFlag, 2,
-                                    I2CM_I2C_MODE_COMPLETE_XFER);
-    
-    if(I2CM_I2C_MSTR_NO_ERROR ==  commFlag)
+                                    I2CM_I2C_MODE_COMPLETE_XFER))
     {
         /* If I2C read started without errors, 
         / wait until master complete read transfer */
-        while(0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_RD_CMPLT))
-        {
-            /* Wait */
-        }
-        
-        if(slaveReadyFlag[1] != 1)
-        {
-           return SLAVE_NOT_READY;
-        }
-    }
-    
-    commFlag = I2CM_I2CMasterReadBuf(sensorAddress,
-                                    sensorValueBuffer, sensorSize*2+1,
-                                    I2CM_I2C_MODE_COMPLETE_XFER);
-    
-    if(I2CM_I2C_MSTR_NO_ERROR ==  commFlag)
-    {
-        /* If I2C read started without errors, 
-        / wait until master complete read transfer */
-        while(0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_RD_CMPLT))
+        while (0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_RD_CMPLT))
         {
             /* Wait */
         }
         
         /* Display transfer status */
-        if(0u == (I2CM_I2C_MSTAT_ERR_XFER & I2CM_I2CMasterStatus()))
+        if (0u == (I2CM_I2C_MSTAT_ERR_XFER & I2CM_I2CMasterStatus()))
         {
-            uint32 sizeRead = I2CM_I2CMasterGetReadBufSize();
-            status = TRANSFER_CMPLT;
+            /* Check packet structure */
+            if ((I2CM_I2CMasterGetReadBufSize() == 2) && slaveReadyFlag[1] == 1)
+            {
+                    status = READY;
+            }
         }
     }
 
     return (status);
+                
+}
+
+uint32 readSensor(uint16 sensorAddress, uint8 sensorSize)
+{
+    uint32 status = TRANSFER_ERROR;
+    
+    (void) I2CM_I2CMasterClearStatus();
+    
+    if(I2CM_I2C_MSTR_NO_ERROR ==  I2CM_I2CMasterReadBuf(sensorAddress,
+                                    sensorValueBuffer, PACKET_SIZE,
+                                    I2CM_I2C_MODE_COMPLETE_XFER))
+    {
+        /* If I2C read started without errors, 
+        / wait until master complete read transfer */
+        while (0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_RD_CMPLT))
+        {
+            /* Wait */
+        }
+        
+        /* Display transfer status */
+        if (0u == (I2CM_I2C_MSTAT_ERR_XFER & I2CM_I2CMasterStatus()))
+        {
+            /* Check packet structure */
+            if ((I2CM_I2CMasterGetReadBufSize() == BUFFER_SIZE) && sensorValueBuffer[0] == 0xFE && sensorValueBuffer[1] == 0xFF)
+            {
+                    status = TRANSFER_CMPLT;
+            }
+        }
+    }
+
+    return (status);
+                
 }
 
 uint32 startCapSenseAcquisition()
 {
-    uint8  buffer[BUFFER_SIZE] = {1};
-    uint8 test[1] = {1};
+    uint8  buffer[1];
     uint32 status = TRANSFER_ERROR;
+
+    buffer[0] = 1;
+    
 
     (void) I2CM_I2CMasterClearStatus();
     
     /* Start I2C write and check status*/
     if(I2CM_I2C_MSTR_NO_ERROR == I2CM_I2CMasterWriteBuf(0x00,
-                                    test, 1,
+                                    buffer, 1,
                                     I2CM_I2C_MODE_COMPLETE_XFER))
     {
         /*If I2C write started without errors, 
@@ -94,7 +110,7 @@ uint32 startCapSenseAcquisition()
         if (0u == (I2CM_I2CMasterStatus() & I2CM_I2C_MSTAT_ERR_XFER))
         {
             /* Check if all bytes was written */
-            if (I2CM_I2CMasterGetWriteBufSize() == BUFFER_SIZE)
+            if (I2CM_I2CMasterGetWriteBufSize() == 1)
             {
                 status = TRANSFER_CMPLT;
             }
@@ -123,15 +139,27 @@ int main(void)
     for(;;)
     {
         
-        //Send acquisition command
-        startCapSenseAcquisition();
         
-        /* Read response packet from the slave */
-        if (TRANSFER_CMPLT == readSensor(0x16, 25))
+        if (TRANSFER_CMPLT == startCapSenseAcquisition())
         {
-            // Send it through UART
-            comm_putmsg((uint8*)sensorValueBuffer, BUFFER_SIZE);
+            while (TRANSFER_CMPLT != readSensor(0x16, 25) && readTryCounter < 10)
+            {
+                // Delay (ms)
+                CyDelay(5u);
+                readTryCounter += 1;
+            }
+           
+            if(readTryCounter < 10)
+                comm_putmsg((uint8*)sensorValueBuffer, BUFFER_SIZE);
+            else
+               comm_putmsg((uint8*)sensorValueBuffer, BUFFER_SIZE);
+                
+            readTryCounter = 0;
+    
         }
+        
+        
+        
         
         // Delay (ms)
         CyDelay(50u);
