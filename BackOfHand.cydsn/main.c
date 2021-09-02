@@ -9,21 +9,7 @@
  *
  * ========================================
 */
-#include "project.h"
-
 #include <main.h>
-
-#define TAXEL_COUNT         (25)
-#define READY_READ          (0xFFFE)
-#define WAITING_FOR_MASTER  (0)
-#define SLAVE_STATE_BYTE    (0)
-
-/* The I2C Slave read and write buffers */
-uint16 i2cReadBuffer [TAXEL_COUNT+1];
-
-#define WRITE_BUFFER_SIZE (1)
-uint8 i2cWriteBuffer[WRITE_BUFFER_SIZE];
-
 
 int main(void)
 {    
@@ -35,18 +21,16 @@ int main(void)
     I2C_I2CSlaveInitWriteBuf(i2cWriteBuffer, WRITE_BUFFER_SIZE);
     I2C_Start();
     
+    //Start capsenses
     CapSense_Start();
     CapSense_ScanAllWidgets();
     
     uint8 readCapSenseFlag = 0;
-    
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
     for(;;)
     {
-        uint32 tt = I2C_I2CSlaveStatus();
         /* Write complete: parse the command packet */
-        if (0u != (tt & I2C_I2C_SSTAT_WR_CMPLT))
+        if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_WR_CMPLT))
         {
             /* Check the packet length */
             if (WRITE_BUFFER_SIZE == I2C_I2CSlaveGetWriteBufSize())
@@ -56,12 +40,8 @@ int main(void)
                 {   
                     i2cReadBuffer[SLAVE_STATE_BYTE] = WAITING_FOR_MASTER;
                     readCapSenseFlag = 1;
-                    i2cWriteBuffer[0] = 0 ;
                 }
-                else
-                {
-                    //ohoh spaghattiyo
-                }
+                i2cWriteBuffer[0] = 0 ;
             }
             
             /* Clear the slave write buffer and status */
@@ -69,6 +49,7 @@ int main(void)
             (void) I2C_I2CSlaveClearWriteStatus();       
         }
         
+        //REceived call to read the capsense
         if(readCapSenseFlag == 1)
         {
             if(!CapSense_IsBusy())
@@ -88,8 +69,8 @@ int main(void)
         }
         
         
-        /* Read complete: expose buffer to master */
-        if (0u != (tt & I2C_I2C_SSTAT_RD_CMPLT))
+        /* Read complete*/
+        if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_RD_CMPLT))
         {
             /* Clear the slave read buffer and status */
             I2C_I2CSlaveClearReadBuf();

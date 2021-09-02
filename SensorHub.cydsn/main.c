@@ -220,7 +220,6 @@ void readSensorsValues()
 }
 
 
-
 int main(void)
 {
     CyGlobalIntEnable;
