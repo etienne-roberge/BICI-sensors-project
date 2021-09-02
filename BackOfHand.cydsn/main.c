@@ -48,9 +48,8 @@ int main(void)
         /* Write complete: parse the command packet */
         if (0u != (tt & I2C_I2C_SSTAT_WR_CMPLT))
         {
-            int test = I2C_I2CSlaveGetWriteBufSize();
             /* Check the packet length */
-            if (WRITE_BUFFER_SIZE == test)
+            if (WRITE_BUFFER_SIZE == I2C_I2CSlaveGetWriteBufSize())
             {
                 /* Check the start and end of packet markers */
                 if(i2cWriteBuffer[0] == 1)

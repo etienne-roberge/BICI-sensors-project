@@ -11,25 +11,27 @@
 */
 
 #include "project.h"
+#include <stdbool.h>
 
 
 #define NUMBER_OF_SENSORS   (0x16)
-
-/* Buffer and packet size */
-#define BUFFER_SIZE         (50u)
-#define PACKET_SIZE         (50u)
-/* Transfer statuses */
 #define TRANSFER_CMPLT      (0x00u)
 #define SLAVE_NOT_READY     (0x01u)
 #define TRANSFER_ERROR      (0xFFu)
 
-#define NOT_READY           (0)
-#define READY               (1)
+#define SENSOR_BUFFER_SIZE  (50u)
+#define UART_BUFFER_SIZE    (SENSOR_BUFFER_SIZE + 1)
+
+uint8 sensorValueBuffer[SENSOR_BUFFER_SIZE];
+uint8 uartBuffer[UART_BUFFER_SIZE];
 
 typedef struct
 {
     uint16 i2cAddr;
     uint8 nbTaxels;
+    bool isOnline;
+    bool wasRead;
+    uint8 nbReadTry;
     
 } SensorInfoStruct;
 
@@ -42,5 +44,13 @@ uint16 sensorAddrList[] =
 uint16 nbTaxelList[] = 
     {14, 6, 6, 6, 15, 14, 6, 6, 6, 15, 14, 
      6, 6, 6, 15, 14, 6, 6, 6, 6, 20, 25};
+    
+uint32 readSensor(const SensorInfoStruct* sensor);
+uint32 startCapSenseAcquisition();
+void initSensorsStructs();
+void resetSensorsReadStatus();
+void readSensorsValues();
+void sendDataToUART(const SensorInfoStruct* sensor);
+int main(void);
     
 /* [] END OF FILE */
