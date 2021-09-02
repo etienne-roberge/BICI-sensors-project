@@ -9,53 +9,72 @@
  *
  * ========================================
 */
-#include "project.h"
-
 #include <main.h>
-
-#define TAXEL_COUNT         (25u)
-
-/* The I2C Slave read and write buffers */
-uint16 i2cReadBuffer [TAXEL_COUNT];
-uint16 i2cWriteBuffer[BUFFER_SIZE];
 
 int main(void)
 {    
     CyGlobalIntEnable;
     __enable_irq(); /* Enable global interrupts. */
     
+    /* Start the I2C Slave */
+    I2C_I2CSlaveInitReadBuf ((uint8 *)i2cReadBuffer,  TAXEL_COUNT*2);
+    I2C_I2CSlaveInitWriteBuf(i2cWriteBuffer, WRITE_BUFFER_SIZE);
     I2C_Start();
     
-    /* 
-    * Set up communication and initialize data buffer to CapSense data 
-    * structure to use Tuner application 
-    
-    I2C_EzI2CSetBuffer1(sizeof(CapSense_dsRam.snsList.button0),
-                        sizeof(CapSense_dsRam.snsList.button0),
-                        (uint8_t *)&CapSense_dsRam.snsList.button0);
-    */
-    I2C_EzI2CSetBuffer1(sizeof(i2cReadBuffer),
-                        sizeof(i2cReadBuffer),
-                        (uint8_t *)&i2cReadBuffer);
-    
-    
+    //Start capsenses
     CapSense_Start();
     CapSense_ScanAllWidgets();
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    
+    uint8 readCapSenseFlag = 0;
 
     for(;;)
     {
-        if(!CapSense_IsBusy())
+        /* Write complete: parse the command packet */
+        if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_WR_CMPLT))
         {
-            CapSense_ProcessAllWidgets();
-            CapSense_RunTuner();
-            CapSense_UpdateAllBaselines();
-            CapSense_ScanAllWidgets(); 
-        
-            for(unsigned int i=0; i<TAXEL_COUNT; ++i)
+            /* Check the packet length */
+            if (WRITE_BUFFER_SIZE == I2C_I2CSlaveGetWriteBufSize())
             {
-                i2cReadBuffer[i] = CapSense_dsRam.snsList.button0[i].raw[0];
+                /* Check the start and end of packet markers */
+                if(i2cWriteBuffer[0] == 1)
+                {   
+                    i2cReadBuffer[SLAVE_STATE_BYTE] = WAITING_FOR_MASTER;
+                    readCapSenseFlag = 1;
+                }
+                i2cWriteBuffer[0] = 0 ;
             }
+            
+            /* Clear the slave write buffer and status */
+            I2C_I2CSlaveClearWriteBuf();
+            (void) I2C_I2CSlaveClearWriteStatus();       
+        }
+        
+        //REceived call to read the capsense
+        if(readCapSenseFlag == 1)
+        {
+            if(!CapSense_IsBusy())
+            {
+                CapSense_ProcessAllWidgets();
+                CapSense_RunTuner();
+                CapSense_ScanAllWidgets(); 
+            
+                for(unsigned int i=0; i<TAXEL_COUNT; ++i)
+                {
+                    i2cReadBuffer[i+1] = CapSense_dsRam.snsList.button0[i].raw[0];
+                }
+                
+                i2cReadBuffer[SLAVE_STATE_BYTE] = READY_READ;
+                readCapSenseFlag = WAITING_FOR_MASTER;
+            }
+        }
+        
+        
+        /* Read complete*/
+        if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_RD_CMPLT))
+        {
+            /* Clear the slave read buffer and status */
+            I2C_I2CSlaveClearReadBuf();
+            (void) I2C_I2CSlaveClearReadStatus();
         }
         
     }
