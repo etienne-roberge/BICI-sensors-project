@@ -21,7 +21,7 @@ const int Buffer_size = 50; //Buffer size is set to a constant for testing
 unsigned char read_buf [Buffer_size];
 // std_msgs::UInt16MultiArray msg;
 serial_example::TactileData msg;
-#define NUM_SESNORS 2
+#define NUM_SESNORS 22
 
 int main (int argc, char** argv)
 {
@@ -32,7 +32,7 @@ int main (int argc, char** argv)
     std::array<ros::Publisher, NUM_SESNORS> publishers;
     for (size_t i=0; i < publishers.size(); i++)
     {
-        publishers[i] = nh.advertise<serial_example::TactileData>("sensor_" + std::to_string(i), 1000);
+        publishers[i] = nh.advertise<serial_example::TactileData>("sensor_" + std::to_string(i+1), 1000);
     }
 
      /* Open and Configure Serial Port */
@@ -88,16 +88,7 @@ int main (int argc, char** argv)
 
         ros::spinOnce();
 
-        struct pollfd fds[1];
-        fds[0].fd = serial_port;
-        fds[0].events = POLLIN;
-        int ready = poll(fds, 1, -1); // timeout set to infinity
-
-        if (ready > 0)
-        {
-            n = read(serial_port, &read_buf, sizeof(read_buf));
-            printf("n = %i \n ", n);
-        }
+        n = read(serial_port, &read_buf, sizeof(read_buf));
 
         // loop through all the bytes we recieved
         for(int i = 0;i<n; i++) 
@@ -199,8 +190,7 @@ int main (int argc, char** argv)
                     if (chksum_calc == chksum)
                     {   
                         // we've finished a whole message!
-                        readInLast = 0;
-                         printf("Good checksum! We got i = %i \n ", chksum_calc);
+                        printf("Good checksum! We got i = %i \n ", chksum_calc);
                     }
                     else
                     {
@@ -208,6 +198,8 @@ int main (int argc, char** argv)
                     }
                     // regardless, reset the checksum calculation
                     chksum_calc = 0;
+                    // 
+                    readInLast = 0;
                     
                 }
                 // else
@@ -219,19 +211,19 @@ int main (int argc, char** argv)
                     
             }
                 
-            // else if this is a valid end byte
-            else if (byte_i == '\n')
-            {
-                // raise an error, it's weird to get this not at the end of a message
-                std::cout << "Got an end byte where we didn't expect it...";
-            }
+            // // else if this is a valid end byte
+            // else if (byte_i == '\n')
+            // {
+            //     // raise an error, it's weird to get this not at the end of a message
+            //     std::cout << "Got an end byte where we didn't expect it...";
+            // }
 
         }
         
         // if readInLast is 0
         if (readInLast == 0)
         {
-            publishers[sensor_num].publish(msg);
+            publishers[sensor_num-1].publish(msg);
             msg.data.clear();
         }
 
