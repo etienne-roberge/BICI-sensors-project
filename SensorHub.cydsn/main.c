@@ -32,22 +32,21 @@ int main(void)
         sensorList[i].nbTaxels = nbTaxelList[i];
     }
     
+    sensorValueBuffer[0] = sensorList[0].i2cAddr;
+    for(uint8 ii=0; ii<sensorList[0].nbTaxels; ++ii)
+    {
+        uint8 r = rand() % 100;
+        sensorValueBuffer[(ii)*2 + 1] = 0x05; 
+        sensorValueBuffer[(ii)*2 + 2] = r; 
+    }
+    
     for(;;)
     {
-        for(uint8 i=0; i<NUMBER_OF_SENSORS; ++i)
-        {
-            sensorValueBuffer[0] = sensorList[i].i2cAddr;
-            for(uint8 ii=0; ii<sensorList[i].nbTaxels; ++ii)
-            {
-                uint8 r = rand() % 100;
-                sensorValueBuffer[(ii)*2 + 1] = 0x05; 
-                sensorValueBuffer[(ii)*2 + 2] = r; 
-            }
-            comm_putmsg((uint8*)sensorValueBuffer, (sensorList[i].nbTaxels)*2+1);
+
+            
+            comm_putmsg((uint8*)sensorValueBuffer, (sensorList[0].nbTaxels)*2+1);
             // Delay (ms)
-            CyDelay(200u);
-        }
-        CyDelay(100u);
+            CyDelay(1000u);
     }
      
 }
