@@ -21,7 +21,7 @@ const int Buffer_size = 50; //Buffer size is set to a constant for testing
 unsigned char read_buf [Buffer_size];
 // std_msgs::UInt16MultiArray msg;
 serial_example::TactileData msg;
-#define NUM_SESNORS 22
+#define NUM_SENSORS 22
 
 int main (int argc, char** argv)
 {
@@ -29,7 +29,7 @@ int main (int argc, char** argv)
     ros::NodeHandle nh;
 
     /* Create Publishers */
-    std::array<ros::Publisher, NUM_SESNORS> publishers;
+    std::array<ros::Publisher, NUM_SENSORS> publishers;
     for (size_t i=0; i < publishers.size(); i++)
     {
         publishers[i] = nh.advertise<serial_example::TactileData>("sensor_" + std::to_string(i+1), 1000);
@@ -74,14 +74,14 @@ int main (int argc, char** argv)
 
     /* Read and Parse Data */
 
-    uint8_t readInLast = 0; // for if our message is split up into multiple reads
-    uint8_t chksum; // for storing the checksum we recieve 
-    uint8_t chksum_calc; // for calculating our own checksum
-    uint8_t sensor_num;
-    uint32_t timestamp;
-    uint8_t byte_i;
-    uint16_t data_entry;
-    int i_adj;
+    uint8_t readInLast = 0; // bytes from last read that are part of the same sensor message
+    uint8_t chksum; // the checksum we received in the message
+    uint8_t chksum_calc; // our own calculated checksum
+    uint8_t sensor_num; // the sensor number we recieved in the message
+    uint32_t timestamp; // the timestamp we recieved in the message
+    uint8_t byte_i; // the ith message of any given read 
+    uint16_t data_entry; // for storing data from one taxel, which is composed of two bytes
+    int i_adj; // adjusted index which takes into account bytes from last read, if applicable
 
     while(ros::ok())
     {
@@ -210,18 +210,11 @@ int main (int argc, char** argv)
                 }
                     
             }
-                
-            // // else if this is a valid end byte
-            // else if (byte_i == '\n')
-            // {
-            //     // raise an error, it's weird to get this not at the end of a message
-            //     std::cout << "Got an end byte where we didn't expect it...";
-            // }
 
         }
         
-        // if readInLast is 0
-        if (readInLast == 0)
+        // if we've finished a message 
+        if ((readInLast == 0) && (sensor_num > 0) && (sensor_num <= NUM_SENSORS))
         {
             publishers[sensor_num-1].publish(msg);
             msg.data.clear();
