@@ -17,7 +17,7 @@
 // #include <vector>
 
 int n;// The number of bytes read
-const int Buffer_size = 50; //Buffer size is set to a constant for testing
+const int Buffer_size = 58; // largest possible buffer size
 unsigned char read_buf [Buffer_size];
 // std_msgs::UInt16MultiArray msg;
 serial_example::TactileData msg;
@@ -93,6 +93,7 @@ int main (int argc, char** argv)
         // loop through all the bytes we recieved
         for(int i = 0;i<n; i++) 
         {
+            printf("i=%i \n", i);
             // grab the current byte
             byte_i = read_buf[i];
 
@@ -109,7 +110,7 @@ int main (int argc, char** argv)
                 // check for valid start byte
                 if (byte_i != 1)
                 {
-                    std::cout << "Expected valid start byte but didn't get it.";
+                    std::cout << "Expected valid start byte but didn't get it.\n";
                     // i_adj = i_adj - 1; // keep looking for the start byte
                 }
                 else
@@ -133,32 +134,32 @@ int main (int argc, char** argv)
                 sensor_num = byte_i;
                 printf("sensor number = %i \n ", sensor_num);
             }
-            // // else if i_adj = 3
-            // else if (i_adj == 3)
-            // {             
-            //     // grab MSB of timestamp
-            //     timestamp = (byte_i << 24);   
-            // }
-            // // else if i_adj = 4
-            // else if (i_adj == 4)
-            // {
-            //     // grab second MSB of timestamp
-            //     timestamp = timestamp | (byte_i << 16);
-            // }
-            // // else if i_adj = 5
-            // else if (i_adj == 5)
-            // {
-            //     // grab third MSB of timestamp
-            //     timestamp = timestamp | (byte_i << 8);
-            // }
-            // // else if i_adj = 6
-            // else if (i_adj == 6)
-            // {
-            //     // grab LSB of timestamp
-            //     timestamp = timestamp | byte_i;
-            //     // set timestamp field of msg
-            //     msg.timestamp = timestamp;
-            // }
+            // else if i_adj = 3
+            else if (i_adj == 3)
+            {             
+                // grab MSB of timestamp
+                timestamp = (byte_i << 24);   
+            }
+            // else if i_adj = 4
+            else if (i_adj == 4)
+            {
+                // grab second MSB of timestamp
+                timestamp = timestamp | (byte_i << 16);
+            }
+            // else if i_adj = 5
+            else if (i_adj == 5)
+            {
+                // grab third MSB of timestamp
+                timestamp = timestamp | (byte_i << 8);
+            }
+            // else if i_adj = 6
+            else if (i_adj == 6)
+            {
+                // grab LSB of timestamp
+                timestamp = timestamp | byte_i;
+                // set timestamp field of msg
+                msg.timestamp = timestamp;
+            }
 
             // else if byte_i is not a valid end byte
             else if (byte_i != '\n') 
@@ -225,5 +226,3 @@ int main (int argc, char** argv)
     loop_rate.sleep();
 
     }
-
-
