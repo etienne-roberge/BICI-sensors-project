@@ -16,11 +16,34 @@
 #include "main.h"
 
 uint8 sensorValueBuffer[BUFFER_SIZE+1];
+uint32 counter = 0; // initialize counter for timesteps
+
+CY_ISR (Timer_Int_Handler)
+{
+    if (Timer_GetInterruptSource() == Timer_INTR_MASK_CC_MATCH)
+    {
+        counter += Timer_ReadCounter(); // add 16-bit timer count to our 32-bit counter
+        Timer_WriteCounter(0); // reset the counter
+        Timer_ClearInterrupt(Timer_INTR_MASK_CC_MATCH); // clear the interrupt
+    }
+
+    if (Timer_GetInterruptSource() == Timer_INTR_MASK_TC)
+    {
+       Timer_ClearInterrupt(Timer_INTR_MASK_TC);
+    }
+    
+    // this is a desperate move
+    Timer_ClearInterrupt(Timer_GetInterruptSource());
+}
 
 int main(void)
 {
     CyGlobalIntEnable;
     comm_init();
+    
+    /* Start Timer */
+    Timer_Start();
+    Timer_Int_StartEx(Timer_Int_Handler);
 
      /* Start the I2C Master */
     I2CM_Start();
@@ -34,22 +57,38 @@ int main(void)
     
     for(;;)
     {
+        
         for(uint8 i=0; i<NUMBER_OF_SENSORS; ++i)
         {
+            // add sensor number to data (1 byte)
             sensorValueBuffer[0] = sensorList[i].i2cAddr;
+            
+            // trigger counter interrupt to get timestamp 
+            Timer_SetInterrupt( Timer_INTR_MASK_CC_MATCH );
+        
+            // add timestamp to data (4 bytes)
+            sensorValueBuffer[1] = (uint8)(counter >> 24);
+            sensorValueBuffer[2] = (uint8)(counter >> 16);
+            sensorValueBuffer[3] = (uint8)(counter >> 8);
+            sensorValueBuffer[4] = (uint8)counter;
+            
+            // add sensor readings to data
             for(uint8 ii=0; ii<sensorList[i].nbTaxels; ++ii)
             {
                 uint8 r = rand() % 100;
-                sensorValueBuffer[(ii)*2 + 1] = 0x05; 
-                sensorValueBuffer[(ii)*2 + 2] = r; 
+                sensorValueBuffer[(ii)*2 + 5] = 0x05; 
+                sensorValueBuffer[(ii)*2 + 6] = r; 
             }
-            comm_putmsg((uint8*)sensorValueBuffer, (sensorList[i].nbTaxels)*2+1);
+            comm_putmsg((uint8*)sensorValueBuffer, (sensorList[i].nbTaxels)*2+5);
             // Delay (ms)
             CyDelay(200u);
         }
         CyDelay(100u);
     }
-     
+    
+    // stop timer and associated interrupt
+    Timer_Stop();
+    Timer_Int_Stop();
 }
 
 /* [] END OF FILE */

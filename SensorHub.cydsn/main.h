@@ -16,8 +16,8 @@
 #define NUMBER_OF_SENSORS   (0x16)
 
 /* Buffer and packet size */
-#define BUFFER_SIZE         (50u)
-#define PACKET_SIZE         (50u)
+#define BUFFER_SIZE         (55u)
+#define PACKET_SIZE         (55u)
 /* Transfer statuses */
 #define TRANSFER_CMPLT      (0x00u)
 #define TRANSFER_ERROR      (0xFFu)
