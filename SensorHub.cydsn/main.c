@@ -224,6 +224,10 @@ int main(void)
 {
     CyGlobalIntEnable;
     comm_init();
+    
+    /* Start Timer */
+    Timer_Start();
+    Timer_Int_StartEx(Timer_Int_Handler);
 
      /* Start the I2C Master */
     I2CM_Start();
@@ -242,6 +246,10 @@ int main(void)
         // Delay (ms)
         CyDelay(50u);
     }
+    
+    // stop timer and associated interrupt
+    Timer_Stop();
+    Timer_Int_Stop();
 }
 
 /* [] END OF FILE */

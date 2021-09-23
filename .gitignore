@@ -22,3 +22,9 @@ Generated_Source
 *.log
 *.zip
 *.Etienne
+
+ROS_COMM_WS/build/
+
+ROS_COMM_WS/devel/
+
+ROS_COMM_WS/.vscode/
