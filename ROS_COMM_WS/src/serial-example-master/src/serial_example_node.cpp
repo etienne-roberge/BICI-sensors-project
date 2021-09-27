@@ -21,6 +21,8 @@ const int Buffer_size = 58; // largest possible buffer size
 unsigned char read_buf [Buffer_size];
 // std_msgs::UInt16MultiArray msg;
 serial_example::TactileData msg;
+#define NUM_SENSOR_MIN 8
+#define NUM_SENSOR_MAX 30
 #define NUM_SENSORS 22
 
 int main (int argc, char** argv)
@@ -30,9 +32,9 @@ int main (int argc, char** argv)
 
     /* Create Publishers */
     std::array<ros::Publisher, NUM_SENSORS> publishers;
-    for (size_t i=0; i < publishers.size(); i++)
+    for (size_t i=0; i < NUM_SENSORS; i++)
     {
-        publishers[i] = nh.advertise<serial_example::TactileData>("sensor_" + std::to_string(i+1), 1000);
+        publishers[i] = nh.advertise<serial_example::TactileData>("sensor_" + std::to_string(i+NUM_SENSOR_MIN), 1000);
     }
 
      /* Open and Configure Serial Port */
@@ -215,9 +217,9 @@ int main (int argc, char** argv)
         }
         
         // if we've finished a message 
-        if ((readInLast == 0) && (sensor_num > 0) && (sensor_num <= NUM_SENSORS))
+        if ((readInLast == 0) && (sensor_num >= NUM_SENSOR_MIN) && (sensor_num <= NUM_SENSOR_MAX))
         {
-            publishers[sensor_num-1].publish(msg);
+            publishers[sensor_num-NUM_SENSOR_MIN].publish(msg);
             msg.data.clear();
         }
 
