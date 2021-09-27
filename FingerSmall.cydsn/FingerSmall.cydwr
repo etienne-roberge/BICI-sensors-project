@@ -13,8 +13,8 @@
     <Group key="Pin">
       <Data key="3dbba19d-7851-4a83-b204-a0a386fe8d68/5382e105-1382-4a2e-b9f4-3bb2feba71e0" value="I2C_sda" />
       <Data key="3dbba19d-7851-4a83-b204-a0a386fe8d68/22863ebe-a37b-476f-b252-6e49a8c00b12" value="I2C_scl" />
-      <Data key="7c22e3c5-da93-4267-9ea2-622856a53add/5382e105-1382-4a2e-b9f4-3bb2feba71e0" value="EZI2C_sda" />
-      <Data key="7c22e3c5-da93-4267-9ea2-622856a53add/22863ebe-a37b-476f-b252-6e49a8c00b12" value="EZI2C_scl" />
+      <Data key="7c22e3c5-da93-4267-9ea2-622856a53add/5382e105-1382-4a2e-b9f4-3bb2feba71e0" value="I2C_sda" />
+      <Data key="7c22e3c5-da93-4267-9ea2-622856a53add/22863ebe-a37b-476f-b252-6e49a8c00b12" value="I2C_scl" />
       <Data key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/3f82339a-dc39-44b1-a453-5aa64c6a4b84" value="CapSense_Tx" />
       <Data key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/0453aae5-9633-4f00-947c-6145e1bc0c9b" value="CapSense_Rx" />
       <Data key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/356467b7-1f72-4d37-bef1-9e209f899936" value="CapSense_CintB" />
@@ -871,22 +871,22 @@
     </Group>
     <Group key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/0453aae5-9633-4f00-947c-6145e1bc0c9b">
       <Group key="0">
-        <Data key="Port Format" value="1,7" />
+        <Data key="Port Format" value="2,4" />
       </Group>
       <Group key="1">
-        <Data key="Port Format" value="2,0" />
+        <Data key="Port Format" value="2,3" />
       </Group>
       <Group key="2">
         <Data key="Port Format" value="2,1" />
       </Group>
       <Group key="3">
-        <Data key="Port Format" value="2,3" />
+        <Data key="Port Format" value="2,5" />
       </Group>
       <Group key="4">
-        <Data key="Port Format" value="2,4" />
+        <Data key="Port Format" value="1,7" />
       </Group>
       <Group key="5">
-        <Data key="Port Format" value="2,5" />
+        <Data key="Port Format" value="2,0" />
       </Group>
     </Group>
     <Group key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/356467b7-1f72-4d37-bef1-9e209f899936">
