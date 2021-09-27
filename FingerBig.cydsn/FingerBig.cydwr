@@ -17,6 +17,7 @@
       <Data key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/0453aae5-9633-4f00-947c-6145e1bc0c9b" value="CapSense_Rx" />
       <Data key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/356467b7-1f72-4d37-bef1-9e209f899936" value="CapSense_CintB" />
       <Data key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/fdff23d7-eab4-45ca-9b64-15db386fa4b1" value="CapSense_CintA" />
+      <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="Pin_1" />
     </Group>
   </Group>
   <Group key="FlashSecurity">
@@ -912,6 +913,11 @@
     <Group key="9115edc9-74a4-4591-a7d2-2ee8b1275a50/fdff23d7-eab4-45ca-9b64-15db386fa4b1">
       <Group key="0">
         <Data key="Port Format" value="0,5" />
+      </Group>
+    </Group>
+    <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
+      <Group key="0">
+        <Data key="Port Format" value="0,0" />
       </Group>
     </Group>
     <Group key="UnAssigned Pins">
