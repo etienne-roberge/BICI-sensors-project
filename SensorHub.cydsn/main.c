@@ -15,6 +15,24 @@
 #include <stdlib.h>
 #include "main.h"
 
+uint32 counter = 0; // initialize counter for timestamps
+
+CY_ISR (Timer_Int_Handler)
+{
+    if (Timer_GetInterruptSource() == Timer_INTR_MASK_CC_MATCH)
+    {
+        counter += Timer_ReadCounter(); // add 16-bit timer count to our 32-bit counter
+        Timer_WriteCounter(0); // reset the counter
+        Timer_ClearInterrupt(Timer_INTR_MASK_CC_MATCH); // clear the interrupt
+    }
+
+    if (Timer_GetInterruptSource() == Timer_INTR_MASK_TC)
+    {
+       Timer_ClearInterrupt(Timer_INTR_MASK_TC);
+    }
+    
+}
+
 /*******************************************************************************
 * uint32 readSensor(const SensorInfoStruct* sensor)
 *
@@ -163,8 +181,16 @@ void sendDataToUART(const SensorInfoStruct* sensor)
     memset(uartBuffer, 0, UART_BUFFER_SIZE);
     //Insert the sensor id in the first byte of the message
     uartBuffer[0] = sensor->i2cAddr;
-    memcpy(uartBuffer+1, sensorValueBuffer+2, sensor->nbTaxels*2);
-    comm_putmsg((uint8*)sensorValueBuffer, sensor->nbTaxels + 1);
+    // trigger counter interrupt to get timestamp 
+    Timer_SetInterrupt( Timer_INTR_MASK_CC_MATCH );
+    // Insert 4 byte timestemp into the message
+    uartBuffer[1] = (uint8)(counter >> 24);
+    uartBuffer[2] = (uint8)(counter >> 16);
+    uartBuffer[3] = (uint8)(counter >> 8);
+    uartBuffer[4] = (uint8) counter;
+    
+    memcpy(uartBuffer + MESSAGE_HEADER_SIZE, sensorValueBuffer+2, sensor->nbTaxels*2);
+    comm_putmsg((uint8*)sensorValueBuffer, sensor->nbTaxels + MESSAGE_HEADER_SIZE);
 }
 
 /*******************************************************************************
@@ -250,6 +276,7 @@ int main(void)
     // stop timer and associated interrupt
     Timer_Stop();
     Timer_Int_Stop();
+    
 }
 
 /* [] END OF FILE */
