@@ -11,3 +11,5 @@ bici_sensors
 4- Use the ros node that you’ve built to publish the data coming from the serial usb port into a rostopic, using the following command: rosrun serial_example serial_example_node
 
 **P.S.**  After activating the previously mentioned ros node, the data get published on the topic /read
+
+**P.S.** When building the ROS package, "serial_example" package must be built first using the command: catkin_make --only-pkg-with-deps <target_package> , then switching back to building all the packages is needed using this command: catkin_make -DCATKIN_WHITELIST_PACKAGES=""
