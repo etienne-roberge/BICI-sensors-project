@@ -32,7 +32,7 @@ int main (int argc, char** argv)
     std::array<ros::Publisher, NUM_SENSORS> publishers;
     for (size_t i=0; i < publishers.size(); i++)
     {
-        publishers[i] = nh.advertise<serial_example::TactileData>("sensor_" + std::to_string(i+1)+"_readings", 1000);
+        publishers[i] = nh.advertise<serial_example::TactileData>("sensor_" + std::to_string(i+1), 1000);
     }
 
      /* Open and Configure Serial Port */
