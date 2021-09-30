@@ -190,7 +190,7 @@ void sendDataToUART(const SensorInfoStruct* sensor)
     uartBuffer[4] = (uint8) counter;
     
     memcpy(uartBuffer + MESSAGE_HEADER_SIZE, sensorValueBuffer+2, sensor->nbTaxels*2);
-    comm_putmsg((uint8*)sensorValueBuffer, sensor->nbTaxels + MESSAGE_HEADER_SIZE);
+    comm_putmsg((uint8*)uartBuffer, sensor->nbTaxels*2 + MESSAGE_HEADER_SIZE);
 }
 
 /*******************************************************************************
