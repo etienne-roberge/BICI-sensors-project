@@ -16,6 +16,8 @@
 #include <stdlib.h>
 // #include <vector>
 
+#define DEBUG
+
 int n;// The number of bytes read
 const int Buffer_size = 58; // largest possible buffer size
 unsigned char read_buf [Buffer_size];
@@ -24,6 +26,8 @@ serial_example::TactileData msg;
 #define NUM_SENSOR_MIN 8
 #define NUM_SENSOR_MAX 30
 #define NUM_SENSORS 22
+
+
 
 int main (int argc, char** argv)
 {
@@ -95,9 +99,11 @@ int main (int argc, char** argv)
         // loop through all the bytes we recieved
         for(int i = 0;i<n; i++) 
         {
-            printf("i=%i \n", i);
             // grab the current byte
             byte_i = read_buf[i];
+            #ifdef DEBUG
+            printf("byte %i = %u \n", i, byte_i);
+            #endif
 
             // incremement chksum_calc
             chksum_calc++;
@@ -112,12 +118,16 @@ int main (int argc, char** argv)
                 // check for valid start byte
                 if (byte_i != 1)
                 {
+                    #ifndef DEBUG
                     std::cout << "Expected valid start byte but didn't get it.\n";
+                    #endif
                     // i_adj = i_adj - 1; // keep looking for the start byte
                 }
                 else
                 {
-                    std::cout << "Got a valid start byte.\n";
+                    #ifndef DEBUG
+                    // std::cout << "Got a valid start byte.\n";
+                    #endif
                 }
 
             }
@@ -134,7 +144,9 @@ int main (int argc, char** argv)
             {
                 // grab sensor number
                 sensor_num = byte_i;
+                #ifndef DEBUG
                 printf("sensor number = %i \n ", sensor_num);
+                #endif
             }
             // else if i_adj = 3
             else if (i_adj == 3)
@@ -170,14 +182,14 @@ int main (int argc, char** argv)
                 if ((i_adj % 2) == 0)
                 {
                     //grab MSB of data for current taxel
-                    data_entry = byte_i;
+                    data_entry = (byte_i << 8);
                 }
                     
                 // else
                 else
                 {
                     // grab LSB of data for current taxel
-                    data_entry = (byte_i << 8) | data_entry;
+                    data_entry = data_entry | byte_i;
                     // push byte into msg.data
                     msg.data.push_back(data_entry);
                 }         
@@ -193,11 +205,15 @@ int main (int argc, char** argv)
                     if (chksum_calc == chksum)
                     {   
                         // we've finished a whole message!
+                        #ifndef DEBUG
                         printf("Good checksum! We got i = %i \n ", chksum_calc);
+                        #endif
                     }
                     else
                     {
+                        #ifndef DEBUG
                         printf("Issue with checksum.... we got i = %i \n ", chksum_calc);
+                        #endif
                     }
                     // regardless, reset the checksum calculation
                     chksum_calc = 0;
