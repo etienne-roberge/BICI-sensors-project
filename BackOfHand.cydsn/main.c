@@ -17,7 +17,7 @@ int main(void)
     __enable_irq(); /* Enable global interrupts. */
     
     /* Start the I2C Slave */
-    I2C_I2CSlaveInitReadBuf ((uint8 *)i2cReadBuffer,  TAXEL_COUNT*2);
+    I2C_I2CSlaveInitReadBuf ((uint8 *)i2cReadBuffer,  sizeof(i2cReadBuffer));
     I2C_I2CSlaveInitWriteBuf(i2cWriteBuffer, WRITE_BUFFER_SIZE);
     I2C_Start();
     

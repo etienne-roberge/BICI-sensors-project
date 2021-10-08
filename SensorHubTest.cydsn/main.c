@@ -77,9 +77,9 @@ int main(void)
             }
             comm_putmsg((uint8*)uartBuffer, (sensorList[i].nbTaxels)*2+MESSAGE_HEADER_SIZE);
             // Delay (ms)
-            CyDelay(200u);
+            //CyDelay(50u);
         }
-        CyDelay(100u);
+        CyDelay(50u);
     }
     
     // stop timer and associated interrupt
