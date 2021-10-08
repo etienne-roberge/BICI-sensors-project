@@ -17,6 +17,7 @@
 #include <boost/circular_buffer.hpp>
 
 #define PRINT
+// #define TEST
 
 int n;// The number of bytes read
 const int buffer_size = 58; // largest possible message size
@@ -91,7 +92,7 @@ int main (int argc, char** argv)
 
      /* Open and Configure Serial Port */
     // open the serial port
-    int serial_port = open("/dev/ttyUSB1", O_RDWR); //The serial port has to be properly renamed in certain cases
+    int serial_port = open("/dev/ttyUSB0", O_RDWR); //The serial port has to be properly renamed in certain cases
     
     // check for errors
     if (serial_port < 0) {
@@ -152,10 +153,11 @@ int main (int argc, char** argv)
             }
         }
 
-
-        while (cb[start_index] != 1)
+        int count = 0;
+        while ((cb[start_index] != 1) && (count < cb_size))
         {
             start_index = (start_index + 1) % cb_size;
+            count++;
         }
         
         end_index = std::distance(cb.begin(), cb.end()) - 1; // this will just be cb_size after a few seconds...
@@ -184,14 +186,27 @@ int main (int argc, char** argv)
                         if ((i % 2) != 0)
                         {
                             //grab MSB of data for current taxel
+                            #ifndef TEST
+                            data_entry = (cb[start_index + i]);
+                            #endif
+
+                            #ifdef TEST
                             data_entry = (cb[start_index + i] << 8);
+                            #endif
                         }
                             
                         // if i is even
                         else
                         {
                             // grab LSB of data for current taxel
-                            data_entry = data_entry | cb[start_index + i];
+                            #ifndef TEST
+                            data_entry = data_entry | (cb[start_index + i] << 8);
+                            #endif
+
+                            #ifdef TEST
+                            data_entry = data_entry | (cb[start_index + i]);
+                            #endif
+
                             // push byte into msg.data
                             msg.data.push_back(data_entry);
                         } 
@@ -212,6 +227,7 @@ int main (int argc, char** argv)
                         #ifdef PRINT
                         printf("BAD SENSOR NUM: start_byte = %i, checksum = %i, sensor_num=: %i \n", cb[start_index], cb[start_index+1], sensor_num);
                         #endif
+                        // start_index = (start_index + message_length) % cb_size;
                     }
 
                     // parse_message(cb, start_index, message_length, publishers);
