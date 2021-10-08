@@ -49,7 +49,75 @@
     <xacro:property name="limit_2_t_low" value="-0.289"/>
     <xacro:property name="limit_3_t_up" value="1.819"/>
     <xacro:property name="limit_3_t_low" value="-0.262"/>
+    <!-- ======= SENSORS SIZES (i.e. taxels rows and cols) ======== -->
+    <xacro:property name="PALM_FRONT_ROWS" value="4"/>
+    <xacro:property name="PALM_FRONT_COLS" value="4"/>
+    <!-- TAXEL MACRO-->
+    <xacro:macro name="taxel" params="count ref_taxel_name sphere_radius origin_xyz origin_rpy">
+            <link name="${ref_taxel_name}_${count}">
+            <visual>
+                    <geometry>
+                        <sphere radius="${sphere_radius}"/>
+                    </geometry> 
+                    <material name="Orange">
+                        <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+                    </material>
+            </visual>
 
+            <collision>
+                <geometry>
+                    <sphere radius="${sphere_radius}"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="joint_${ref_taxel_name}_${count}" type="fixed">
+            <parent link="${ref_taxel_name}_${count-1}"/>
+            <child link="${ref_taxel_name}_${count}"/>
+            <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+        </joint>
+
+    </xacro:macro>
+    <!-- END TAXEL MACRO -->
+<!-- =========================================================================== -->
+    <!--PALM FRONT TAXELS MACRO-->
+    <xacro:macro name="taxels_loop" 
+    params="row_taxels col_taxels running_count reference_taxel_name 
+    taxel_sphere_radius taxel_origin_xyz taxel_origin_rpy">
+        <xacro:taxel 
+        count = "${running_count}"
+        ref_taxel_name = "${reference_taxel_name}" 
+        sphere_radius =  "${taxel_sphere_radius}"
+        origin_xyz = "${taxel_origin_xyz}"
+        origin_rpy = "${taxel_origin_rpy}"
+        />
+        <xacro:if value="${row_taxels}">
+            <xacro:if value="${col_taxels}">
+
+                <xacro:taxels_loop row_taxels="${row_taxels}"
+                                   col_taxels = "${col_taxels-1}" 
+                                   running_count="${running_count+1}"
+                                   reference_taxel_name = "${reference_taxel_name}"
+                                   taxel_sphere_radius =  "${taxel_sphere_radius}"
+                                   taxel_origin_xyz = "0.01 0 0"
+                                   taxel_origin_rpy = "0 0 0"
+                                   />
+            
+            </xacro:if>
+            <xacro:if value="${row_taxels-2}">
+            <xacro:taxels_loop row_taxels="${row_taxels-1}" 
+                               col_taxels = "${PALM_FRONT_COLS-1}" 
+                               running_count="${running_count+1}"
+                               reference_taxel_name = "${reference_taxel_name}"
+                               taxel_sphere_radius =  "${taxel_sphere_radius}"
+                               taxel_origin_xyz = "0 0.01 0"
+                               taxel_origin_rpy = "0 0 0"
+                               />
+            </xacro:if>
+        </xacro:if>
+    </xacro:macro>
+
+    <!--END PALM FRONT TAXELS MACRO-->
     <!-- ============================================================================= -->
 
     <!-- PALM -->
@@ -79,8 +147,96 @@
               izz="1e-4"/>
         </inertial>
     </link>
+    <!-- PALM FRONT REFERENCE TAXEL -->
+    <link name="link_palm_front_taxel_0">
+        <visual>
+            <geometry>
+                <sphere radius="0.01"/>
+            </geometry> 
+                <material name="Orange">
+                    <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+                </material>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="joint_palm_front_taxel_0" type="fixed">
+        <parent link="palm_link"/>
+        <child link="link_palm_front_taxel_0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+<!-- PALM FRONT TAXELS-->   
+<xacro:taxels_loop 
+row_taxels="${PALM_FRONT_ROWS}" 
+col_taxels="${PALM_FRONT_COLS-1}" 
+running_count="1"
+reference_taxel_name = "link_palm_front_taxel"
+taxel_sphere_radius = "0.01" 
+taxel_origin_xyz = "0.01 0 0" 
+taxel_origin_rpy = "0 0 0"
+
+/>
+<!-- BACK REFERENCE TAXEL -->
+    <link name="link_palm_back_taxel_0">
+        <visual>
+            <geometry>
+                <sphere radius="0.01"/>
+            </geometry> 
+                <material name="Orange">
+                    <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+                </material>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="joint_palm_back_taxel_0" type="fixed">
+        <parent link="palm_link"/>
+        <child link="link_palm_back_taxel_0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    
 
     <!-- ============================================================================= -->
+    <!-- REFERENCE TAXEL MACRO -->
+    <xacro:macro name="ref_taxel"
+                 params="finger_num finger_part face tip origin_xyz origin_rpy sphere_radius">
+            <link name="link_${finger_num*4+finger_part}_${face}_taxel_0${tip}">
+            <visual>
+                    <geometry>
+                        <sphere radius="${sphere_radius}"/>
+                    </geometry> 
+                    <material name="Orange">
+                        <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+                    </material>
+            </visual>
+
+            <collision>
+                <geometry>
+                    <sphere radius="${sphere_radius}"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="joint_${finger_num*4+finger_part}_${face}_taxel_0${tip}" type="fixed">
+            <parent link="link_${finger_num*4+finger_part}${tip}"/>
+            <child link="link_${finger_num*4+finger_part}_${face}_taxel_0${tip}"/>
+            <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+        </joint>
+
+    </xacro:macro>
+    <!-- END REFERENCE TAXEL MACRO -->
+    <!-- ============================================================================= -->
+
     <!-- THUMB MACRO -->
     <xacro:macro name="thumb_right"
                  params="finger_num offset_origin_x offset_origin_y offset_origin_z finger_angle_r finger_angle_p finger_angle_y">
@@ -270,30 +426,6 @@
         </joint>
 
 <!-- ..........................................................................  -->
-        <!-- FingerTip Taxels -->
-        <link name="link_${finger_num*4+3}_tip_taxel_0">
-            <visual>
-                    <geometry>
-                        <sphere radius="0.002"/>
-                    </geometry> 
-                    <material name="Orange">
-                        <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
-                    </material>
-            </visual>
-
-            <collision>
-                <geometry>
-                    <sphere radius="0.002"/>
-                </geometry>
-            </collision>
-        </link>
-
-        <joint name="joint_${finger_num*4+3}_tip_taxel_0" type="fixed">
-            <parent link="link_${finger_num*4+3}_tip"/>
-            <child link="link_${finger_num*4+3}_tip_taxel_0"/>
-            <origin xyz="0 0 0.016" rpy="0 0 0"/>
-        </joint>
-<!-- ........................................................................... -->
     
     </xacro:macro>
     <!-- END THUMB MACRO -->
@@ -383,6 +515,26 @@
             <origin xyz="0 0 ${link0_z}"/>
             <dynamics damping="3" friction="5"/>
         </joint>
+    <!-- FRONT TAXEL -->
+        <xacro:ref_taxel
+            finger_num = "${finger_num}"
+            finger_part = "1"
+            face = "front"
+            tip = ""
+            origin_xyz = "0 0 0"
+            origin_rpy = "0 0 0"
+            sphere_radius="0.01"
+        />
+    <!-- BACK TAXEL -->
+        <xacro:ref_taxel
+            finger_num = "${finger_num}"
+            finger_part = "1"
+            face = "back"
+            tip = ""
+            origin_xyz = "0 0 0"
+            origin_rpy = "0 0 0"
+            sphere_radius="0.01"
+        />
 
         <!-- [LINK 2, 6, 10]-->
         <link name="link_${finger_num*4+2}">
@@ -419,6 +571,27 @@
             <origin xyz="0 0 ${link1_z}"/>
             <dynamics damping="8" friction="10"/>
         </joint>
+
+    <!-- FRONT TAXEL -->
+        <xacro:ref_taxel
+            finger_num = "${finger_num}"
+            finger_part = "2"
+            face = "front"
+            tip = ""
+            origin_xyz = "0 0 0"
+            origin_rpy = "0 0 0"
+            sphere_radius="0.01"
+        />
+    <!-- BACK TAXEL -->
+        <xacro:ref_taxel
+            finger_num = "${finger_num}"
+            finger_part = "2"
+            face = "back"
+            tip = ""
+            origin_xyz = "0 0 0"
+            origin_rpy = "0 0 0"
+            sphere_radius="0.01"
+        />
 
         <!-- [LINK 3, 7, 11] -->
         <link name="link_${finger_num*4+3}">
@@ -487,31 +660,27 @@
             <child link="link_${finger_num*4+3}_tip"/>
             <origin rpy="0 0 0" xyz="0 0 ${link3_z-fingerTip_r}"/>
         </joint>
-        <!-- FingerTip Taxels -->
-        <link name="link_${finger_num*4+3}_tip_taxel_0">
-            <visual>
-                    <geometry>
-                        <sphere radius="0.002"/>
-                    </geometry> 
-                    <material name="Orange">
-                        <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
-                    </material>
-            </visual>
+    <!-- FRONT TAXEL -->
+        <xacro:ref_taxel
+            finger_num = "${finger_num}"
+            finger_part = "3"
+            face = "front"
+            tip = "_tip"
+            origin_xyz = "0 0 0.016"
+            origin_rpy = "0 0 0"
+            sphere_radius="0.01"
+        />
+    <!-- BACK TAXEL -->
+        <xacro:ref_taxel
+            finger_num = "${finger_num}"
+            finger_part = "3"
+            face = "back"
+            tip = "_tip"
+            origin_xyz = "0 0 0.016"
+            origin_rpy = "0 0 0"
+            sphere_radius="0.01"
+        />
 
-            <collision>
-                <geometry>
-                    <sphere radius="0.002"/>
-                </geometry>
-            </collision>
-        </link>
-
-        <joint name="joint_${finger_num*4+3}_tip_taxel_0" type="fixed">
-            <parent link="link_${finger_num*4+3}_tip"/>
-            <child link="link_${finger_num*4+3}_tip_taxel_0"/>
-            <origin xyz="0 0 0.016" rpy="0 0 0"/>
-        </joint>
-
-        
     </xacro:macro>
     <!-- [[END]] THREE FINGER MACRO -->
 

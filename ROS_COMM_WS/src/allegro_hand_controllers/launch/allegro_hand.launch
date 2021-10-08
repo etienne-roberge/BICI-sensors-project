@@ -132,7 +132,7 @@
         output="screen" 
         type="robot_state_publisher">
     <!-- Comment out the next line if you want to listen to the tf transformations rather than visualizing them in rviz-->
-    <!-- <remap from="tf" to="allegroHand_$(arg NUM)/tf"/> -->
+    <remap from="tf" to="allegroHand_$(arg NUM)/tf"/>
     <remap from="joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
   </node>
 
