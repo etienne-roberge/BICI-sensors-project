@@ -28,8 +28,15 @@ include_directories(
 )
 
 add_executable(serial_example_node src/serial_example_node.cpp)
+add_executable(sensor_parser src/sensor_parser.cpp)
+add_dependencies(serial_example_node serial_example_generate_messages_cpp )
 
 target_link_libraries(serial_example_node
   ${catkin_LIBRARIES}
 )
+
+target_link_libraries(sensor_parser
+  ${catkin_LIBRARIES}
+)
+
 
