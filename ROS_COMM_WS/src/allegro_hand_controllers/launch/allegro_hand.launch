@@ -76,7 +76,6 @@
          command="$(find xacro)/xacro
                   $(find allegro_hand_description)/allegro_hand_description_$(arg HAND).xacro"/>
 
-  
 
   <!-- Allegro Hand controller and communication node. -->
   <node name="allegroHand_$(arg HAND)_$(arg NUM)"

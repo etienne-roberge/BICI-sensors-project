@@ -62,6 +62,7 @@ void parse_message(boost::circular_buffer<uint8_t> &cb, uint8_t start_index, uin
 
     // publish the message to the appropriate topic
     uint8_t sensor_num = cb[start_index + 2];
+    msg.sensor_num = sensor_num;
     if ((sensor_num >= NUM_SENSOR_MIN) && (sensor_num <= NUM_SENSOR_MAX))
     {
         #ifdef PRINT
