@@ -237,15 +237,6 @@
         origin_xyz = "0 -0.015 0"
         origin_rpy = "0 0 0"
         />
-    <!-- New Row-->
-    <!-- Taxel 20-->
-        <xacro:taxel 
-        count = "20"
-        ref_taxel_name = "${reference_taxel_name}" 
-        sphere_radius =  "${taxel_sphere_radius}"
-        origin_xyz = "0 0 -0.015"
-        origin_rpy = "0 0 0"
-        />
     </xacro:macro>
     <!--END PALM FRONT TAXELS MACRO-->
 
@@ -526,6 +517,47 @@
         ref_taxel_name = "${reference_taxel_name}" 
         sphere_radius =  "${taxel_sphere_radius}"
         origin_xyz = "0 0 -0.01"
+        origin_rpy = "0 0 0"
+        />
+    <!-- New Row-->
+    <!-- Taxel 10-->
+        <xacro:taxel 
+        count = "10"
+        ref_taxel_name = "${reference_taxel_name}" 
+        sphere_radius =  "${taxel_sphere_radius}"
+        origin_xyz = "0 -0.01 0"
+        origin_rpy = "0 0 0"
+        />
+    <!-- Taxel 11-->
+        <xacro:taxel 
+        count = "11"
+        ref_taxel_name = "${reference_taxel_name}" 
+        sphere_radius =  "${taxel_sphere_radius}"
+        origin_xyz = "0 0 0.01"
+        origin_rpy = "0 0 0"
+        />
+    <!-- Taxel 12-->
+        <xacro:taxel 
+        count = "12"
+        ref_taxel_name = "${reference_taxel_name}" 
+        sphere_radius =  "${taxel_sphere_radius}"
+        origin_xyz = "0 0 0.01"
+        origin_rpy = "0 0 0"
+        />
+    <!-- Taxel 13-->
+        <xacro:taxel 
+        count = "13"
+        ref_taxel_name = "${reference_taxel_name}" 
+        sphere_radius =  "${taxel_sphere_radius}"
+        origin_xyz = "0 0 0.01"
+        origin_rpy = "0 0 0"
+        />
+    <!-- Taxel 14-->
+        <xacro:taxel 
+        count = "14"
+        ref_taxel_name = "${reference_taxel_name}" 
+        sphere_radius =  "${taxel_sphere_radius}"
+        origin_xyz = "0 0 0.01"
         origin_rpy = "0 0 0"
         />
     </xacro:macro>

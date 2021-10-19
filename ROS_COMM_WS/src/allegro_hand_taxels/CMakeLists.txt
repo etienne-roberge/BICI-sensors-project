@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   roscpp
   message_generation
+  visualization_msgs
 )
 
 add_message_files(
@@ -30,7 +31,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES allegro_hand_taxels
-  CATKIN_DEPENDS   tf2_ros geometry_msgs roscpp std_msgs message_runtime
+  CATKIN_DEPENDS   tf2_ros geometry_msgs visualization_msgs roscpp std_msgs message_runtime
 #  DEPENDS
 )
 

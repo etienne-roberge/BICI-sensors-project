@@ -1,15 +1,14 @@
 bici_sensors
 
 **ROS Communication Package**
+In order to download the setup the packages needed to communicate with the Allegro Hand, please execute the following shell scripts in order and follow the instructions as prompted:
+1- Pcan_Downloads
+2- Pcan_Bus_Setup
 
-1- Use the following command: dmesg | grep tty  to identify the name of the USB port
+In order to read data from the tactile sensors, the USB serial communication must be setup by executing the following shell script:
+serial_USB_Setup
 
-2- Change the permission to the USB port already found in the previous step, using the following command: sudo chmod 777 /dev/”USB Name”
+After building everything in ROS_COMM_WS using catkin, the following command will initiate the torque control of the Allegro hand, as well as contact visualization/recording:
+roslaunch allegro_hand_controllers allegro_hand.launch HAND:=right CONTROLLER:=torque VISUALIZE:=true
 
-3- Configure the parameters of the USB serial port communication to match the parameters used while programming the chip using psoc creator, using the following command: stty -F /dev/”USB Name” 9600 cs8 -cstopb -parenb
-
-4- Use the ros node that you’ve built to publish the data coming from the serial usb port into a rostopic, using the following command: rosrun serial_example serial_example_node
-
-**P.S.**  After activating the previously mentioned ros node, the data get published on the topic /read
-
-**P.S.** When building the ROS package, "serial_example" package must be built first using the command: catkin_make --only-pkg-with-deps <target_package> , then switching back to building all the packages is needed using this command: catkin_make -DCATKIN_WHITELIST_PACKAGES=""
+**P.S.** When building the ROS package, "serial_comm" package must be built first using the command: catkin_make --only-pkg-with-deps <target_package> , then switching back to building all the packages is needed using this command: catkin_make -DCATKIN_WHITELIST_PACKAGES=""
