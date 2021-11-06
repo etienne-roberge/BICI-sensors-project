@@ -29,4 +29,24 @@ ROS_COMM_WS/devel/
 
 ROS_COMM_WS/.vscode/
 
-Allegro_Hand_CAD_Files
+Allegro_Hand_CAD_Files/
+
+UR5/catkin_ws/build
+
+UR5/catkin_ws/devel
+
+UR5/catkin_ws/src/moveit_resources
+
+UR5/catkin_ws/src/robotiq
+
+UR5/catkin_ws/src/robotiq_85_gripper
+
+UR5/catkin_ws/src/universal_robot
+
+UR5/catkin_ws/src/Universal_Robots_ROS_Driver
+
+UR5/catkin_ws/src/Universal_Robots_ROS_scaled_controllers
+
+UR5/catkin_ws/src/ur_modern_driver
+
+UR5/catkin_ws/src/ur_msgs

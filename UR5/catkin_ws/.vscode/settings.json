@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/devel/lib/python3/dist-packages",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/devel/lib/python3/dist-packages",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}

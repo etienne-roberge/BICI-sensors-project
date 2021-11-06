@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/devel/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/allegro_hand_driver/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/bhand/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/universal_robot/ur_kinematics/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
