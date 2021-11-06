@@ -2,7 +2,9 @@ bici_sensors
 
 **ROS Communication Package**
 In order to download the setup the packages needed to communicate with the Allegro Hand, please execute the following shell scripts in order and follow the instructions as prompted:
+
 1- Pcan_Downloads
+
 2- Pcan_Bus_Setup
 
 In order to read data from the tactile sensors, the USB serial communication must be setup by executing the following shell script:
@@ -16,11 +18,16 @@ roslaunch allegro_hand_controllers allegro_hand.launch HAND:=right CONTROLLER:=t
 **UR5 Packages (Based on Alexandre Bernier Repo)**
 
 In addition to the dependencies suggested by Alex, the following ones should be installed:
-1- Clone and build the following repo: https://github.com/UniversalRobots/Universal_Robots_ROS_scaled_controllers.git
-2- Install and build the following repo: https://github.com/GT-RAIL/robotiq_85_gripper
-3- Clone and build the following repo: https://github.com/ros-planning/moveit_resources.git
 
-P.S. Make sure to initialize the robot each time it stops (whether because of an emergency or a shut down) in order to control it
+1- Clone and build the following repo: https://github.com/UniversalRobots/Universal_Robots_ROS_scaled_controllers.git
+
+2- Clone and build the following repo: https://github.com/ros-planning/moveit_resources.git
+
+**P.S.** Make sure to download the robotiq_85_gripper package as a zip file from Alex's Repo (otherwise it will be empty on your local machine)
+
+**P.S.** Make sure to initialize the robot each time it stops (whether because of an emergency or a shut down) in order to control it
+
+**P.S.** Remove all the nodes and arguments related to the gripper and force-torque sensor from the following launch files, if they are not mounted on the robotic arm: $(find coro_workstations)/launch/hardware_workstation.launch **AND** $(find coro_workstations)/launch/ur5_workstation.launch
 
 
 
