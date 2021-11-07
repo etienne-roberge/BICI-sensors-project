@@ -23,12 +23,23 @@ In addition to the dependencies suggested by Alex, the following ones should be 
 
 2- Clone and build the following repo: https://github.com/ros-planning/moveit_resources.git
 
-**P.S.** Make sure to clone Alex's Repo using the following command to avoid cloning empty directories into your local machine: git clone --recurse-submodules
+**P.S.** Make sure to clone the robotiq_85_gripper repo using the following command (because Alex included it as a submodule): 
+
+git clone https://github.com/alexandre-bernier/robotiq_85_gripper.git 
+
+And make sure to delete .submodules file inside coro_workstations and .git directory inside robotiq_85_gripper
 
 **P.S.** Make sure to initialize the robot each time it stops (whether because of an emergency or a shut down) in order to control it
 
 **P.S.** Remove all the nodes and arguments related to the gripper and force-torque sensor from the following launch files, if they are not mounted on the robotic arm: $(find coro_workstations)/launch/hardware_workstation.launch **AND** $(find coro_workstations)/launch/ur5_workstation.launch
 
+**P.S.** After cloning Alex's Repo, make sure to do the following steps:
+
+1- Delete the .git directory at the root of the cloned repo (redelete it if it appears again)
+
+2- Use the following command (only once): git rm --cached coro_workstations
+
+**P.S.** Sometimes you have to build some packages (like robotiq_85_msgs and robotiq_ft_sensor) prior to building everything in the workspace
 
 
 
