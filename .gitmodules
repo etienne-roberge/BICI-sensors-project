@@ -1,3 +1,2 @@
-[submodule "coro_workstations"]
-	path = coro_workstations
+[submodule "UR5/catkin_ws/src/coro_workstations"]
 	url = https://github.com/alexandre-bernier/coro_workstations
