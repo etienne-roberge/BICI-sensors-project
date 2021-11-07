@@ -1,0 +1,3 @@
+[submodule "coro_workstations"]
+	path = coro_workstations
+	url = https://github.com/alexandre-bernier/coro_workstations

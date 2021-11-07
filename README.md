@@ -23,7 +23,7 @@ In addition to the dependencies suggested by Alex, the following ones should be 
 
 2- Clone and build the following repo: https://github.com/ros-planning/moveit_resources.git
 
-**P.S.** Make sure to download the robotiq_85_gripper package as a zip file from Alex's Repo (otherwise it will be empty on your local machine)
+**P.S.** Make sure to clone Alex's Repo using the following command to avoid cloning empty directories into your local machine: git clone --recurse-submodules
 
 **P.S.** Make sure to initialize the robot each time it stops (whether because of an emergency or a shut down) in order to control it
 
