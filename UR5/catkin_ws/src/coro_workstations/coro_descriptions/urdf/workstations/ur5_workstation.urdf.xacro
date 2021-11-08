@@ -24,36 +24,78 @@
 	</joint>
 
 	<!-- FORCE-TORQUE SENSOR -->
-	<xacro:include filename="$(find robotiq_ft_sensor)/urdf/robotiq_ft300.urdf.xacro"/>
-	<xacro:robotiq_ft300 prefix="" parent="tool0">
+	<xacro:include filename="$(find robotiq_ft_sensor)/urdf/robotiq_fts150.urdf.xacro"/>
+	<xacro:robotiq_fts150 prefix="" parent="tool0">
 		<origin xyz="0 0 -0.0045" rpy="0 0 -1.5708"/>
-	</xacro:robotiq_ft300>
+	</xacro:robotiq_fts150>
 	<gazebo reference="ft300_sensor">
 		<material>Gazebo/Black</material>
 	</gazebo>
 	<gazebo reference="ft300_mounting_plate">
 		<material>Gazebo/Black</material>
 	</gazebo>
-	
+
+	<!-- Allegro Hand Mounting Bracket-->
+    <link name="allgero_ur5_bracket">
+        <visual>
+            <geometry>
+                <mesh filename="package://coro_descriptions/meshes/Allegro_UR5_Bracket.stl"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0 "/>
+            <material name="black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://coro_descriptions/meshes/Allegro_UR5_Bracket.stl"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0 "/>
+        </collision>
+        <inertial>
+          <origin xyz="0 0 0.0025" rpy="0 0 0"/>
+          <mass value="0.05"/>
+          <inertia
+              ixx="1e-4" ixy="0.0" ixz="0.0"
+              iyy="1e-4" iyz="0.0"
+              izz="1e-4"/>
+        </inertial>
+    </link>
+	<joint name="ft_sensor_to_bracket" type="fixed">
+		<parent link="fts_robotside"/>
+		<child link="allgero_ur5_bracket"/>
+		<origin xyz="0 0 0.0475" rpy="0 0 0"/>
+	</joint>
+	<!-- Allegro Hand-->
+	<xacro:include filename="$(find allegro_hand_description)/allegro_hand_description_right.xacro"/>
+	<xacro:allegro_hand_right/>
+	<joint name="hand_to_bracket" type="fixed">
+		<parent link="allgero_ur5_bracket"/>
+		<child link="palm_link"/>
+		<origin xyz="0 0 0.1037" rpy="0 0 0"/>
+	</joint>	
 	<!-- GRIPPER COUPLING -->
+	<!--
 	<xacro:include filename="$(find coro_descriptions)/urdf/common/2f_coupling.urdf.xacro"/>
 	<xacro:coupling_robotiq_2f prefix="" parent="ft300_sensor">
 		<origin xyz="0 0 -0.0045" rpy="0 0 0"/>
 	</xacro:coupling_robotiq_2f>
+	-->
    	
 	<!-- GRIPPER -->
+	<!--
 	<xacro:include filename="$(find robotiq_85_description)/urdf/robotiq_85_gripper.urdf.xacro"/>
 	<xacro:robotiq_85_gripper prefix="" parent="coupling_gripper_fix">
 		<origin xyz="0 0 0" rpy="0 1.5708 0"/>
 	</xacro:robotiq_85_gripper>
-    	
+	-->	
 	<link name="tcp"/>
 	<joint name="tcp_to_gripper" type="fixed">
 		<parent link="tool0"/>
 		<child link="tcp"/>
 		<origin xyz="0 0 0.19" rpy="0 0 0"/>
 	</joint>
-
 	<!-- GAZEBO -->
 	<gazebo>
     		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

@@ -10,7 +10,7 @@ Note: Taken from ur5_ros_control.launch in ur_modern_driver.
 	<arg name="dollar" value="$"/>
 	
 	<!-- Robot -->
-	<arg name="robot" default="ur5e" doc="Choose between: ur5, ur10, ur5e"/>
+	<arg name="robot" default="ur5" doc="Choose between: ur5, ur10, ur5e"/>
 	<arg if="$(eval robot=='ur5')" name="cb2" value="1"/>
 	<arg if="$(eval robot=='ur10')" name="cb2" value="1"/>
 	<arg if="$(eval robot=='ur5e')" name="cb2" value="0"/>

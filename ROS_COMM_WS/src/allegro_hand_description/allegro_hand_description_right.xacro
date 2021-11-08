@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="allegro_hand_right">
-
+<xacro:macro name="allegro_hand_right">
     <xacro:property name="DEG2RAD" value="0.01745329251"/>
     
 <!-- P.S. ALL THE REFERENCE TAXELS POSITIONS MUST BE MEASURED AND THEIR LOCATIONS SHOULD BE SPECIFIED IN THIS FILE-->
@@ -1864,5 +1864,5 @@
             />
 
     <!-- ============================================================================= -->
-
+</xacro:macro>
 </robot>

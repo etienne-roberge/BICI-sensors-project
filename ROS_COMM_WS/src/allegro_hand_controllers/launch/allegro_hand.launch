@@ -68,14 +68,16 @@
   <arg name="RESPAWN" default="false"/>
 
   <!-- Load the robot description directly from the xacro file. (NOTE: store it
-       in two parameter names.) -->
+       in two parameter names.) 
+  -->
   <!-- <param name="robot_description"
-          command="cat $(find allegro_hand_description)/allegro_hand_description_$(arg HAND).urdf"/> -->
-
+          command="cat $(find allegro_hand_description)/allegro_hand_description_$(arg HAND).urdf"/> 
+  -->
+  <!--
   <param name="robot_description"
          command="$(find xacro)/xacro
                   $(find allegro_hand_description)/allegro_hand_description_$(arg HAND).xacro"/>
-
+  -->
 
   <!-- Allegro Hand controller and communication node. -->
   <node name="allegroHand_$(arg HAND)_$(arg NUM)"
@@ -88,7 +90,9 @@
         args="$(arg POLLING)" >
 
     <!-- Remapping of topics into enumerated allegroHand_# namespace -->
+    <!--
     <remap from="allegroHand/joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
+    -->
     <remap from="allegroHand/joint_cmd" to="allegroHand_$(arg NUM)/joint_cmd"/>
     <remap from="allegroHand/lib_cmd" to="allegroHand_$(arg NUM)/lib_cmd"/>
     <remap from="allegroHand/torque_cmd" to="allegroHand_$(arg NUM)/torque_cmd"/>
@@ -126,15 +130,18 @@
   </node>
 
   <!-- Joint States (angles) to Joint Transforms -->
+  <!--
   <node name="jointState2tf_$(arg NUM)"
         pkg="robot_state_publisher"
         output="screen" 
         type="robot_state_publisher">
+  -->
     <!-- Comment out the next line if you want to listen to the tf transformations rather than visualizing them in rviz-->
+  <!--  
     <remap from="tf" to="allegroHand_$(arg NUM)/tf"/>
     <remap from="joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
   </node>
-
+  -->
 
 
   <!-- Keyboard handler (if arg KEYBOARD is true) -->
