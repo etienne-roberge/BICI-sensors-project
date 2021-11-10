@@ -8,10 +8,10 @@
 
 std::string jointNames[DOF_JOINTS] =
         {
-                "joint_0.0", "joint_1.0", "joint_2.0", "joint_3.0",
-                "joint_4.0", "joint_5.0", "joint_6.0", "joint_7.0",
-                "joint_8.0", "joint_9.0", "joint_10.0", "joint_11.0",
-                "joint_12.0", "joint_13.0", "joint_14.0", "joint_15.0"
+                "joint_0_0", "joint_1_0", "joint_2_0", "joint_3_0",
+                "joint_4_0", "joint_5_0", "joint_6_0", "joint_7_0",
+                "joint_8_0", "joint_9_0", "joint_10_0", "joint_11_0",
+                "joint_12_0", "joint_13_0", "joint_14_0", "joint_15_0"
         };
 
 

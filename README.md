@@ -41,5 +41,10 @@ And make sure to delete .submodules file inside coro_workstations and .git direc
 
 **P.S.** Sometimes you have to build some packages (like robotiq_85_msgs and robotiq_ft_sensor) prior to building everything in the workspace
 
+**P.S.** After creating the config and launch files usin MSA (moveit Setup Assistant):
+
+1- comment out the execution_type argument in the include section of the file: $(find coro_workstations)/ur5_hw_workstation_moveit_config/launch/trajectory_execution.launch.xml
+
+2- Change "word" to "world" inside $(find coro_workstations)/ur5_hw_workstation_moveit_config/config/ur5_2f85.srdf
 
 

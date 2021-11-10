@@ -1,5 +1,33 @@
 controller_list:
-  - name: fake_arm_controller
+  - name: fake_allegro_hand_thumb_controller
+    type: $(arg execution_type)
+    joints:
+      - joint_12_0
+      - joint_13_0
+      - joint_14_0
+      - joint_15_0
+  - name: fake_allegro_hand_index_controller
+    type: $(arg execution_type)
+    joints:
+      - joint_0_0
+      - joint_1_0
+      - joint_2_0
+      - joint_3_0
+  - name: fake_allegro_hand_middle_controller
+    type: $(arg execution_type)
+    joints:
+      - joint_4_0
+      - joint_5_0
+      - joint_6_0
+      - joint_7_0
+  - name: fake_allegro_hand_pinky_controller
+    type: $(arg execution_type)
+    joints:
+      - joint_8_0
+      - joint_9_0
+      - joint_10_0
+      - joint_11_0
+  - name: fake_ur5_arm_controller
     type: $(arg execution_type)
     joints:
       - shoulder_pan_joint
@@ -8,12 +36,8 @@ controller_list:
       - wrist_1_joint
       - wrist_2_joint
       - wrist_3_joint
-  - name: fake_gripper_controller
-    type: $(arg execution_type)
-    joints:
-      - gripper_finger1_joint
 initial:  # Define initial robot poses.
-  - group: arm
-    pose: home
-  - group: gripper
-    pose: open
+#  - group: allegro_hand_thumb
+#    pose: home
+
+  []

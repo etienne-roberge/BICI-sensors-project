@@ -169,10 +169,12 @@
 	args="-urdf -model rrbot -param robot_description"
         if="$(arg GAZEBO)" /> 
   <!-- Comment: Node that monitors the taxels positions in space and saves them upon contact -->
+  <!--
   <node name="coordinates_listener_node"
         pkg="allegro_hand_taxels"
         type="coordinates_listener">
   </node> 
+  -->
    <!-- Comment: Node that emulates the taxels
   <node name="sensor_emulator_node"
         pkg="allegro_hand_taxels"
@@ -180,10 +182,12 @@
   </node> 
   -->
    <!-- Comment: Node that reads the taxels data -->
+   <!--
   <node name="sensor_parser_node"
         pkg="serial_comm"
         type="sensor_parser">
   </node> 
+  -->
 
 
 

@@ -5,8 +5,9 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
+        - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.7425600290298462
-    Tree Height: 144
+    Tree Height: 183
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -72,6 +73,219 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          allegro_ur5_bracket:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link_inertia:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          columns_link_beam:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          flange:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          forearm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ft_sensor_mounting_plate:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          fts150:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_10:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_11:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_11_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_12:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_13:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_14:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_15:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_15_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_3:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_3_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_4:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_5:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_6:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_7:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_7_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_8:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_9:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          middle_robot_fix:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          middle_robot_mount:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          palm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robot_column:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulder_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          table_base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          table_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tool0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          upper_arm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          workspace_column:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          workspace_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wrist_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
         Loop Animation: false
         Robot Alpha: 0.5
         Robot Color: 150; 50; 150
@@ -94,7 +308,7 @@ Visualization Manager:
         Goal State Color: 250; 128; 0
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
-        Planning Group: arm
+        Planning Group: allegro_hand_middle
         Query Goal State: true
         Query Start State: false
         Show Workspace: false
@@ -117,1483 +331,224 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          allegro_ur5_bracket:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link_inertia:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          columns_link_beam:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          flange:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          forearm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ft_sensor_mounting_plate:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          fts150:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_10:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_11:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_11_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_12:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_13:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_14:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_15:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_15_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_3:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_3_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_4:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_5:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_6:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_7:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_7_tip:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_8:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          link_9:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          middle_robot_fix:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          middle_robot_mount:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          palm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robot_column:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulder_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          table_base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          table_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tool0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          upper_arm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          workspace_column:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          workspace_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wrist_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 0.1
-    - Alpha: 1
-      Class: rviz/RobotModel
-      Collision Enabled: false
-      Enabled: true
-      Links:
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: Links in Alphabetic Order
-        allgero_ur5_bracket:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link_inertia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        columns_link_beam:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        flange:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        forearm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fts_robotside:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fts_toolside:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        link_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_back_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_back_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_back_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_back_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_back_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_back_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_front_upper_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_front_upper_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_front_upper_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_front_upper_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_front_upper_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_10_front_upper_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_tip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_15:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_16:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_17:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_18:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_19:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_11_wedge_tip_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_back_lower_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_back_lower_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_back_lower_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_back_lower_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_back_lower_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_back_lower_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_front_lower_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_front_lower_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_front_lower_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_front_lower_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_front_lower_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_14_front_lower_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_back_upper_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_back_upper_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_back_upper_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_back_upper_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_back_upper_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_back_upper_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_front_upper_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_front_upper_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_front_upper_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_front_upper_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_front_upper_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_front_upper_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_tip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_15:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_16:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_17:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_18:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_19:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_15_wedge_tip_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_back_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_front_lower_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_front_lower_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_front_lower_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_front_lower_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_front_lower_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_front_lower_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_back_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_back_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_back_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_back_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_back_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_back_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_front_upper_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_front_upper_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_front_upper_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_front_upper_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_front_upper_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_front_upper_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_tip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_15:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_16:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_17:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_18:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_19:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_wedge_tip_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_back_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_front_lower_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_front_lower_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_front_lower_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_front_lower_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_front_lower_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_front_lower_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_back_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_back_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_back_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_back_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_back_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_back_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_front_upper_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_front_upper_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_front_upper_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_front_upper_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_front_upper_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_front_upper_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_tip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_15:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_16:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_17:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_18:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_19:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_7_wedge_tip_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_back_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_front_lower_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_front_lower_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_front_lower_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_front_lower_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_front_lower_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_9_front_lower_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_15:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_16:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_17:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_18:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_19:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_20:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_21:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_22:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_23:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_24:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_back_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_10:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_11:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_12:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_13:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_14:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_15:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_16:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_17:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_18:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_19:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_palm_front_taxel_9:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        middle_robot_fix:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        middle_robot_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        palm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_column:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_ft_frame_id:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        shoulder_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        table_base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        table_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tool0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        upper_arm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        workspace_column:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        workspace_table:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        world:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wrist_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wrist_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wrist_3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-      Name: RobotModel
-      Robot Description: robot_description
-      TF Prefix: ""
-      Update Interval: 0
-      Value: true
-      Visual Enabled: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -1610,7 +565,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 5.086000442504883
+      Distance: 3.7588095664978027
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -1626,14 +581,14 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.36979711055755615
+      Pitch: 0.8397967219352722
       Target Frame: world
-      Yaw: 1.4717738628387451
+      Yaw: 3.804941177368164
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1267
+  Height: 1312
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -1642,9 +597,9 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000003a300000457fc0200000007fb000000100044006900730070006c006100790073010000006e000001880000018200fffffffb0000000800480065006c00700000000342000000bb000000d400fffffffb0000000a0056006900650077007300000003b0000000b00000013200fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000002600000026fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000202000002c3000002b800ffffff000003d10000045700000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000003a300000484fc0200000007fb000000100044006900730070006c006100790073010000006e000001af0000018200fffffffb0000000800480065006c00700000000342000000bb000000d400fffffffb0000000a0056006900650077007300000003b0000000b00000013200fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000002600000026fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000229000002c9000002b800ffffff000006510000048400000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1920
-  X: 117
-  Y: 394
+  Width: 2560
+  X: 0
+  Y: 54
