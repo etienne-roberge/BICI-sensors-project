@@ -88,7 +88,10 @@
         args="$(arg POLLING)" >
 
     <!-- Remapping of topics into enumerated allegroHand_# namespace -->
+    <!--
     <remap from="allegroHand/joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
+    -->
+    <remap from="allegroHand/joint_states" to="/joint_states"/>
     <remap from="allegroHand/joint_cmd" to="allegroHand_$(arg NUM)/joint_cmd"/>
     <remap from="allegroHand/lib_cmd" to="allegroHand_$(arg NUM)/lib_cmd"/>
     <remap from="allegroHand/torque_cmd" to="allegroHand_$(arg NUM)/torque_cmd"/>
@@ -131,8 +134,10 @@
         output="screen" 
         type="robot_state_publisher">
     <!-- Comment out the next line if you want to listen to the tf transformations rather than visualizing them in rviz-->
+    <!--
     <remap from="tf" to="allegroHand_$(arg NUM)/tf"/>
     <remap from="joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
+    -->
   </node>
 
 
@@ -162,10 +167,12 @@
 	args="-urdf -model rrbot -param robot_description"
         if="$(arg GAZEBO)" /> 
   <!-- Comment: Node that monitors the taxels positions in space and saves them upon contact -->
+  <!--
   <node name="coordinates_listener_node"
         pkg="allegro_hand_taxels"
         type="coordinates_listener">
   </node> 
+  -->
    <!-- Comment: Node that emulates the taxels
   <node name="sensor_emulator_node"
         pkg="allegro_hand_taxels"
@@ -173,10 +180,33 @@
   </node> 
   -->
    <!-- Comment: Node that reads the taxels data -->
+   <!--
   <node name="sensor_parser_node"
         pkg="serial_comm"
         type="sensor_parser">
   </node> 
+  -->
+    	<!-- Then, launch Moveit -->
+  	<!-- ******************* -->
+  	<!-- Run the main MoveIt executable --> 
+  	<include file="/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/allegro_hw_moveit/launch/move_group.launch">
+  		<arg name="publish_monitored_planning_scene" value="true"/>
+		<arg name="allow_trajectory_execution" value="true"/>
+		<arg name="fake_execution" value="false"/>
+		<arg name="pipeline" value="ompl"/>
+		<arg name="load_robot_description" value="true"/>
+		<arg name="info" value="true"/>
+		<arg name="debug" default="false"/>
+  	</include>
+  	
+  	<!-- ******** -->
+  	<!-- And Rviz -->
+  	<!-- ******** -->
+  	<!-- Run Rviz and load the default config to see the state of the move_group node -->
+  	<include file="/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/allegro_hw_moveit/launch/moveit_rviz.launch">
+  		<arg name="rviz_config" default="/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/allegro_hw_moveit/launch/moveit.rviz"/>
+		<arg name="debug" value="false"/>
+	</include>
 
 
 

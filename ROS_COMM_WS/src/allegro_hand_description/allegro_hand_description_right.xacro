@@ -1008,10 +1008,11 @@
         </inertial>
     </link>
     <!-- PALM FRONT REFERENCE TAXEL -->
+    <!--
     <link name="link_palm_front_taxel_0">
         <visual>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry> 
                 <material name="Orange">
                     <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
@@ -1020,7 +1021,7 @@
 
         <collision>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry>
         </collision>
     </link>
@@ -1029,16 +1030,21 @@
         <parent link="palm_link"/>
         <child link="link_palm_front_taxel_0"/>
         <origin xyz="0.015 0.045 -0.015" rpy="0 0 0"/>
+    -->
         <!-- the origin coordinates must be measured-->
+    <!--
     </joint>
+    -->
 <!-- PALM FRONT TAXELS-->   
-    <xacro:Palm_Front_Taxels reference_taxel_name = "link_palm_front_taxel" taxel_sphere_radius = "0.005"/>
-
+<!--
+    <xacro:Palm_Front_Taxels reference_taxel_name = "link_palm_front_taxel" taxel_sphere_radius = "0.0025"/>
+-->
 <!-- PALM BACK REFERENCE TAXEL -->
+<!--
     <link name="link_palm_back_taxel_0">
         <visual>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry> 
                 <material name="Orange">
                     <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
@@ -1047,7 +1053,7 @@
 
         <collision>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry>
         </collision>
     </link>
@@ -1057,9 +1063,11 @@
         <child link="link_palm_back_taxel_0"/>
         <origin xyz="-0.035 0.045 -0.015" rpy="0 0 0"/>
     </joint>
-   <!-- PALM BACK TAXELS-->   
-    <xacro:Palm_Back_Taxels reference_taxel_name = "link_palm_back_taxel" taxel_sphere_radius = "0.005"/>
-
+-->
+   <!-- PALM BACK TAXELS-->
+<!--   
+    <xacro:Palm_Back_Taxels reference_taxel_name = "link_palm_back_taxel" taxel_sphere_radius = "0.0025"/>
+-->
     <!-- ============================================================================= -->
     <!-- REFERENCE TAXEL MACRO -->
     <xacro:macro name="ref_taxel"
@@ -1069,8 +1077,8 @@
                     <geometry>
                         <sphere radius="${sphere_radius}"/>
                     </geometry> 
-                    <material name="Orange">
-                        <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+                    <material name="Green">
+                        <color rgba="${90/255} ${108/255} ${10/255} 1.0"/>
                     </material>
             </visual>
 
@@ -1123,7 +1131,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+0}.0" type="revolute">
+        <joint name="joint_${finger_num*4+0}_0" type="revolute">
             <axis xyz="-1 0 0"/>
             <limit effort="15" velocity="7"
                    lower="${limit_0_t_low-joint_safety_margin}"
@@ -1162,7 +1170,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+1}.0" type="revolute">
+        <joint name="joint_${finger_num*4+1}_0" type="revolute">
             <axis xyz="0 0 1"/>
             <limit effort="15" velocity="7"
                    lower="${limit_1_t_low+joint_safety_margin}"
@@ -1198,7 +1206,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+2}.0" type="revolute">
+        <joint name="joint_${finger_num*4+2}_0" type="revolute">
             <axis xyz="0 1 0"/>
             <limit effort="15" velocity="7"
                    lower="${limit_2_t_low+joint_safety_margin}"
@@ -1209,6 +1217,7 @@
             <dynamics damping="3" friction="10"/>
         </joint>
         <!-- Thumb Back Lower Reference Taxel-->
+        <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "2"
@@ -1216,11 +1225,15 @@
             tip = ""
             origin_xyz = "-0.02 0.005 0.002"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+        -->
         <!-- Thumb Front Lower Taxels-->
-        <xacro:PartAB_Front_ThumbBack_Lower_Taxels reference_taxel_name="link_${finger_num*4+2}_back_lower_taxel" taxel_sphere_radius="0.005" />
+        <!--
+        <xacro:PartAB_Front_ThumbBack_Lower_Taxels reference_taxel_name="link_${finger_num*4+2}_back_lower_taxel" taxel_sphere_radius="0.0025" />
+        -->
         <!-- Thumb Front Lower Reference Taxel-->
+        <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "2"
@@ -1228,11 +1241,13 @@
             tip = ""
             origin_xyz = "0.02 0.005 0.002"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+        -->
         <!-- Thumb Front Lower Taxels-->
-        <xacro:PartAB_Front_ThumbFront_Lower_Taxels reference_taxel_name="link_${finger_num*4+2}_front_lower_taxel" taxel_sphere_radius="0.005" />
-
+        <!--
+        <xacro:PartAB_Front_ThumbFront_Lower_Taxels reference_taxel_name="link_${finger_num*4+2}_front_lower_taxel" taxel_sphere_radius="0.0025" />
+        -->
         <!-- [LINK 15] -->
         <link name="link_${finger_num*4+3}">
             <visual>
@@ -1259,7 +1274,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+3}.0" type="revolute">
+        <joint name="joint_${finger_num*4+3}_0" type="revolute">
             <axis xyz="0 1 0"/>
             <limit effort="15" velocity="7"
                    lower="${limit_3_t_low+joint_safety_margin}"
@@ -1270,6 +1285,7 @@
             <dynamics damping="3" friction="12"/>
         </joint>
         <!-- Thumb Back Upper Reference Taxel-->
+        <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "3"
@@ -1277,11 +1293,15 @@
             tip = ""
             origin_xyz = "-0.02 0.005 0.002"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+        -->
         <!-- Thumb Back Upper Taxels-->
-        <xacro:PartAB_Front_ThumbBack_Upper_Taxels reference_taxel_name="link_${finger_num*4+3}_back_upper_taxel" taxel_sphere_radius="0.005" />
+        <!--
+        <xacro:PartAB_Front_ThumbBack_Upper_Taxels reference_taxel_name="link_${finger_num*4+3}_back_upper_taxel" taxel_sphere_radius="0.0025" />
+        -->
         <!-- Thumb Front Upper Reference Taxel-->
+        <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "3"
@@ -1289,11 +1309,13 @@
             tip = ""
             origin_xyz = "0.02 0.005 0.002"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+        -->
         <!-- Thumb Front Upper Taxel-->
-        <xacro:PartAB_Front_ThumbFront_Upper_Taxels reference_taxel_name="link_${finger_num*4+3}_front_upper_taxel" taxel_sphere_radius="0.005" />
-
+        <!--
+        <xacro:PartAB_Front_ThumbFront_Upper_Taxels reference_taxel_name="link_${finger_num*4+3}_front_upper_taxel" taxel_sphere_radius="0.0025" />
+        -->
         <!-- [FINGER TIP] -->
         <link name="link_${finger_num*4+3}_tip">
             <visual>
@@ -1327,6 +1349,7 @@
             <origin rpy="0 0 0" xyz="0 0 ${link3_t_z-fingerTip_r}"/>
         </joint>
     <!-- FINGERTIP INCLINED PORTION REFERENCE TAXEL -->
+    <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "3"
@@ -1334,16 +1357,19 @@
             tip = "_tip"
             origin_xyz = "0.025 0.005 0"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+    -->
     <!-- FINGERTIP INCLINED TAXELS -->
-        <xacro:Fingertip_Inclined_Taxels reference_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" taxel_sphere_radius = "0.005"/>
-
+    <!--
+        <xacro:Fingertip_Inclined_Taxels reference_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" taxel_sphere_radius = "0.0025"/>
+    -->
     <!-- FINGERTIP FLAT TOP PORTION REFERENCE TAXEL (P.S. No macro is used here in order to index the taxels on the fingetip in a continuous manner)-->
+    <!--
         <link name="link_${finger_num*4+3}_wedge_tip_taxel_10">
         <visual>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry> 
             <material name="Orange">
                 <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
@@ -1352,7 +1378,7 @@
 
         <collision>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry>
         </collision>
         </link>
@@ -1362,39 +1388,46 @@
             <child link="link_${finger_num*4+3}_wedge_tip_taxel_10"/>
             <origin xyz="0.007 0.005 0.05" rpy="0 0 0"/>
         </joint>
-
+    -->
     <!-- FINGERTIP FLAT TOP TAXELS (P.S. No macro is used here in order to index the taxels on the fingertip in a continuous manner)-->
     <!-- Taxel 1-->
+    <!--
         <xacro:taxel 
         count = "11"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "-0.01 0 0"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- New Row-->
     <!-- Taxel 2-->
+    <!--
         <xacro:taxel 
         count = "12"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 -0.01 0"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- Taxel 3-->
+    <!--
         <xacro:taxel 
         count = "13"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0.01 0 0"
         origin_rpy = "0 0 0"
         />
+    -->
          
     <!-- FINGERTIP STRAIGHT PORTION REFERENCE TAXEL (P.S. No macro is used here in order to index the taxels on the fingetip in a continuous manner)-->
+        <!--
         <link name="link_${finger_num*4+3}_wedge_tip_taxel_14">
         <visual>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry> 
             <material name="Orange">
                 <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
@@ -1403,7 +1436,7 @@
 
         <collision>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry>
         </collision>
         </link>
@@ -1413,51 +1446,60 @@
             <child link="link_${finger_num*4+3}_wedge_tip_taxel_14"/>
             <origin xyz="-0.02 0.005 0.02" rpy="0 0 0"/>
         </joint>
- 
+        -->
     <!--FINGERTIP STRAIGHT PORTION TAXELS (P.S. No macro is used here in order to index the taxels on the fingertip in a continuous manner)-->
 
     <!-- Taxel 1-->
+    <!--
         <xacro:taxel 
         count = "15"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 -0.009"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- Taxel 2-->
+    <!--
         <xacro:taxel 
         count = "16"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 -0.009"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- New Row-->
     <!-- Taxel 3-->
+    <!--
         <xacro:taxel 
         count = "17"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 -0.009 0"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- Taxel 4-->
+    <!--
         <xacro:taxel 
         count = "18"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 0.009"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- Taxel 5-->
+    <!--
         <xacro:taxel 
         count = "19"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 0.009"
         origin_rpy = "0 0 0"
         />
-
+    -->
     
     </xacro:macro>
     <!-- END THUMB MACRO -->
@@ -1501,7 +1543,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+0}.0" type="revolute">
+        <joint name="joint_${finger_num*4+0}_0" type="revolute">
             <axis xyz="0 0 1"/>
             <limit effort="15" velocity="7"
                    lower="${limit_0_low+joint_safety_margin}"
@@ -1537,7 +1579,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+1}.0" type="revolute">
+        <joint name="joint_${finger_num*4+1}_0" type="revolute">
             <limit effort="15" velocity="7"
                    lower="${limit_1_low+joint_safety_margin}"
                    upper="${limit_1_up-joint_safety_margin}"/>
@@ -1548,6 +1590,7 @@
             <dynamics damping="3" friction="5"/>
         </joint>
     <!-- FRONT TAXEL (LOWER) -->
+    <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "1"
@@ -1555,12 +1598,15 @@
             tip = ""
             origin_xyz = "0.02 0.005 0.018"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+    -->
     <!-- Part A/B Front Taxels -->
-        <xacro:PartAB_Front_FingerFront_Bottom_Taxels reference_taxel_name = "link_${finger_num*4+1}_front_lower_taxel" taxel_sphere_radius = "0.005"/>
-
+    <!--
+        <xacro:PartAB_Front_FingerFront_Bottom_Taxels reference_taxel_name = "link_${finger_num*4+1}_front_lower_taxel" taxel_sphere_radius = "0.0025"/>
+    -->
     <!-- BACK TAXEL -->
+    <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "1"
@@ -1568,11 +1614,13 @@
             tip = ""
             origin_xyz = "-0.02 0.005 0"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+    -->
     <!-- PartA Back Taxels -->
-        <xacro:PartA_Back_Taxels reference_taxel_name = "link_${finger_num*4+1}_back_taxel" taxel_sphere_radius = "0.005"/>
-
+    <!--
+        <xacro:PartA_Back_Taxels reference_taxel_name = "link_${finger_num*4+1}_back_taxel" taxel_sphere_radius = "0.0025"/>
+    -->
         <!-- [LINK 2, 6, 10]-->
         <link name="link_${finger_num*4+2}">
             <visual>
@@ -1598,7 +1646,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+2}.0" type="revolute">
+        <joint name="joint_${finger_num*4+2}_0" type="revolute">
             <axis xyz="0 1 0"/>
             <limit effort="15" velocity="7"
                    lower="${limit_2_low+joint_safety_margin}"
@@ -1610,6 +1658,7 @@
         </joint>
 
 <!-- FRONT TAXEL (UPPER) -->
+<!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "2"
@@ -1619,10 +1668,13 @@
             origin_rpy = "0 0 0"
             sphere_radius="0.005"
         />
+-->
     <!-- Part A/B Front Taxels -->
+    <!--
         <xacro:PartAB_Front_FingerFront_Upper_Taxels reference_taxel_name = "link_${finger_num*4+2}_front_upper_taxel" taxel_sphere_radius = "0.005"/>
-
+    -->
     <!-- BACK TAXEL -->
+    <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "2"
@@ -1630,11 +1682,13 @@
             tip = ""
             origin_xyz = "-0.02 -0.005 0.02"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+    -->
     <!-- Part A/B Front Taxels -->
-        <xacro:PartAB_Front_FingerBack_Taxels reference_taxel_name = "link_${finger_num*4+2}_back_taxel" taxel_sphere_radius = "0.005"/>
-
+    <!--
+        <xacro:PartAB_Front_FingerBack_Taxels reference_taxel_name = "link_${finger_num*4+2}_back_taxel" taxel_sphere_radius = "0.0025"/>
+    -->
 
         <!-- [LINK 3, 7, 11] -->
         <link name="link_${finger_num*4+3}">
@@ -1661,7 +1715,7 @@
             </inertial>
         </link>
 
-        <joint name="joint_${finger_num*4+3}.0" type="revolute">
+        <joint name="joint_${finger_num*4+3}_0" type="revolute">
             <axis xyz="0 1 0"/>
             <limit effort="15" velocity="7"
                    lower="${limit_3_low+joint_safety_margin}"
@@ -1704,6 +1758,7 @@
             <origin rpy="0 0 0" xyz="0 0 ${link3_z-fingerTip_r}"/>
         </joint>
     <!-- FINGERTIP INCLINED PORTION REFERENCE TAXEL -->
+    <!--
         <xacro:ref_taxel
             finger_num = "${finger_num}"
             finger_part = "3"
@@ -1711,16 +1766,19 @@
             tip = "_tip"
             origin_xyz = "0.025 0.005 0"
             origin_rpy = "0 0 0"
-            sphere_radius="0.005"
+            sphere_radius="0.0025"
         />
+    -->
     <!-- FINGERTIP INCLINED TAXELS -->
-        <xacro:Fingertip_Inclined_Taxels reference_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" taxel_sphere_radius = "0.005"/>
-
+    <!--
+        <xacro:Fingertip_Inclined_Taxels reference_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" taxel_sphere_radius = "0.0025"/>
+    -->
     <!-- FINGERTIP FLAT TOP PORTION REFERENCE TAXEL (P.S. No macro is used here in order to index the taxels on the fingetip in a continuous manner)-->
+    <!--
         <link name="link_${finger_num*4+3}_wedge_tip_taxel_10">
         <visual>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry> 
             <material name="Orange">
                 <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
@@ -1729,7 +1787,7 @@
 
         <collision>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry>
         </collision>
         </link>
@@ -1739,39 +1797,45 @@
             <child link="link_${finger_num*4+3}_wedge_tip_taxel_10"/>
             <origin xyz="0.007 0.005 0.05" rpy="0 0 0"/>
         </joint>
-
+    -->
     <!-- FINGERTIP FLAT TOP TAXELS (P.S. No macro is used here in order to index the taxels on the fingertip in a continuous manner)-->
     <!-- Taxel 1-->
+    <!--
         <xacro:taxel 
         count = "11"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "-0.01 0 0"
         origin_rpy = "0 0 0"
         />
+        -->
     <!-- New Row-->
     <!-- Taxel 2-->
+    <!--
         <xacro:taxel 
         count = "12"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 -0.01 0"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- Taxel 3-->
+    <!--
         <xacro:taxel 
         count = "13"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0.01 0 0"
         origin_rpy = "0 0 0"
         />
-         
+    -->
     <!-- FINGERTIP STRAIGHT PORTION REFERENCE TAXEL (P.S. No macro is used here in order to index the taxels on the fingetip in a continuous manner)-->
+        <!--
         <link name="link_${finger_num*4+3}_wedge_tip_taxel_14">
         <visual>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry> 
             <material name="Orange">
                 <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
@@ -1780,7 +1844,7 @@
 
         <collision>
             <geometry>
-                <sphere radius="0.005"/>
+                <sphere radius="0.0025"/>
             </geometry>
         </collision>
         </link>
@@ -1790,51 +1854,60 @@
             <child link="link_${finger_num*4+3}_wedge_tip_taxel_14"/>
             <origin xyz="-0.02 0.005 0.02" rpy="0 0 0"/>
         </joint>
- 
+ -->
     <!--FINGERTIP STRAIGHT PORTION TAXELS (P.S. No macro is used here in order to index the taxels on the fingertip in a continuous manner)-->
 
     <!-- Taxel 1-->
+    <!--
         <xacro:taxel 
         count = "15"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 -0.009"
         origin_rpy = "0 0 0"
         />
+    -->
     <!-- Taxel 2-->
+    <!--
         <xacro:taxel 
         count = "16"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 -0.009"
         origin_rpy = "0 0 0"
         />
+        -->
     <!-- New Row-->
     <!-- Taxel 3-->
+    <!--
         <xacro:taxel 
         count = "17"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 -0.009 0"
         origin_rpy = "0 0 0"
         />
+        -->
     <!-- Taxel 4-->
+    <!--
         <xacro:taxel 
         count = "18"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 0.009"
         origin_rpy = "0 0 0"
         />
+        -->
     <!-- Taxel 5-->
+    <!--
         <xacro:taxel 
         count = "19"
         ref_taxel_name = "link_${finger_num*4+3}_wedge_tip_taxel" 
-        sphere_radius =  "0.005"
+        sphere_radius =  "0.0025"
         origin_xyz = "0 0 0.009"
         origin_rpy = "0 0 0"
         />
-        
+      -->  
     </xacro:macro>
     <!-- [[END]] THREE FINGER MACRO -->
 

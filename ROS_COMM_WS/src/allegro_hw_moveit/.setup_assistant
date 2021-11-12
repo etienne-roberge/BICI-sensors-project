@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: allegro_hand_description
+    relative_path: allegro_hand_description_right.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/allegro_hand_right.srdf
+  CONFIG:
+    author_name: Abed Al Rahman Al Mrad
+    author_email: abed-al-rahman.al-mrad.1@ens.etsmtl.ca
+    generated_timestamp: 1636589778

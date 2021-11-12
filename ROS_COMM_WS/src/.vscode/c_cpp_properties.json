@@ -1,0 +1,33 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/devel/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/allegro_hand_driver/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/bhand/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/Universal_Robots_ROS_Driver/controller_stopper/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/ROS_COMM_WS/src/moveit_resources/prbt_ikfast_manipulator_plugin/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/robotiq/robotiq_2f_gripper_action_server/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/robotiq/robotiq_2f_gripper_control/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/robotiq/robotiq_ethercat/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/robotiq/robotiq_ft_sensor/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/Universal_Robots_ROS_scaled_controllers/scaled_joint_trajectory_controller/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/Universal_Robots_ROS_scaled_controllers/speed_scaling_interface/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/Universal_Robots_ROS_scaled_controllers/speed_scaling_state_controller/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/Universal_Robots_ROS_Driver/ur_calibration/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/universal_robot/ur_kinematics/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/ur_modern_driver/include/**",
+        "/home/abed/Desktop/Stanford_Project/GitHub_Repo/UR5/catkin_ws/src/Universal_Robots_ROS_Driver/ur_robot_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

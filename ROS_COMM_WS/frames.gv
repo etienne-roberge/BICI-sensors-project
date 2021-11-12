@@ -96,6 +96,12 @@ digraph G {
 "link_15_wedge_tip_taxel_7" -> "link_15_wedge_tip_taxel_8"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_15_wedge_tip_taxel_8" -> "link_15_wedge_tip_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_back_taxel_0" -> "link_1_back_taxel_1"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_1_back_taxel_9" -> "link_1_back_taxel_10"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_1_back_taxel_8" -> "link_1_back_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_1_back_taxel_10" -> "link_1_back_taxel_11"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_1_back_taxel_11" -> "link_1_back_taxel_12"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_1_back_taxel_12" -> "link_1_back_taxel_13"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_1_back_taxel_13" -> "link_1_back_taxel_14"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_back_taxel_1" -> "link_1_back_taxel_2"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_back_taxel_2" -> "link_1_back_taxel_3"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_back_taxel_3" -> "link_1_back_taxel_4"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
@@ -103,7 +109,6 @@ digraph G {
 "link_1_back_taxel_5" -> "link_1_back_taxel_6"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_back_taxel_6" -> "link_1_back_taxel_7"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_back_taxel_7" -> "link_1_back_taxel_8"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"link_1_back_taxel_8" -> "link_1_back_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_front_lower_taxel_0" -> "link_1_front_lower_taxel_1"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_front_lower_taxel_1" -> "link_1_front_lower_taxel_2"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_1_front_lower_taxel_2" -> "link_1_front_lower_taxel_3"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
@@ -137,6 +142,12 @@ digraph G {
 "link_3_wedge_tip_taxel_7" -> "link_3_wedge_tip_taxel_8"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_3_wedge_tip_taxel_8" -> "link_3_wedge_tip_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_back_taxel_0" -> "link_5_back_taxel_1"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_5_back_taxel_9" -> "link_5_back_taxel_10"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_5_back_taxel_8" -> "link_5_back_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_5_back_taxel_10" -> "link_5_back_taxel_11"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_5_back_taxel_11" -> "link_5_back_taxel_12"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_5_back_taxel_12" -> "link_5_back_taxel_13"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_5_back_taxel_13" -> "link_5_back_taxel_14"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_back_taxel_1" -> "link_5_back_taxel_2"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_back_taxel_2" -> "link_5_back_taxel_3"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_back_taxel_3" -> "link_5_back_taxel_4"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
@@ -144,7 +155,6 @@ digraph G {
 "link_5_back_taxel_5" -> "link_5_back_taxel_6"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_back_taxel_6" -> "link_5_back_taxel_7"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_back_taxel_7" -> "link_5_back_taxel_8"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"link_5_back_taxel_8" -> "link_5_back_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_front_lower_taxel_0" -> "link_5_front_lower_taxel_1"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_front_lower_taxel_1" -> "link_5_front_lower_taxel_2"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_5_front_lower_taxel_2" -> "link_5_front_lower_taxel_3"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
@@ -178,6 +188,12 @@ digraph G {
 "link_7_wedge_tip_taxel_7" -> "link_7_wedge_tip_taxel_8"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_7_wedge_tip_taxel_8" -> "link_7_wedge_tip_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_back_taxel_0" -> "link_9_back_taxel_1"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_9_back_taxel_9" -> "link_9_back_taxel_10"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_9_back_taxel_8" -> "link_9_back_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_9_back_taxel_10" -> "link_9_back_taxel_11"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_9_back_taxel_11" -> "link_9_back_taxel_12"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_9_back_taxel_12" -> "link_9_back_taxel_13"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"link_9_back_taxel_13" -> "link_9_back_taxel_14"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_back_taxel_1" -> "link_9_back_taxel_2"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_back_taxel_2" -> "link_9_back_taxel_3"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_back_taxel_3" -> "link_9_back_taxel_4"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
@@ -185,7 +201,6 @@ digraph G {
 "link_9_back_taxel_5" -> "link_9_back_taxel_6"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_back_taxel_6" -> "link_9_back_taxel_7"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_back_taxel_7" -> "link_9_back_taxel_8"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"link_9_back_taxel_8" -> "link_9_back_taxel_9"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_front_lower_taxel_0" -> "link_9_front_lower_taxel_1"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_front_lower_taxel_1" -> "link_9_front_lower_taxel_2"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_9_front_lower_taxel_2" -> "link_9_front_lower_taxel_3"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
@@ -230,7 +245,6 @@ digraph G {
 "link_palm_front_taxel_17" -> "link_palm_front_taxel_18"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_palm_front_taxel_18" -> "link_palm_front_taxel_19"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_palm_front_taxel_1" -> "link_palm_front_taxel_2"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"link_palm_front_taxel_19" -> "link_palm_front_taxel_20"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_palm_front_taxel_2" -> "link_palm_front_taxel_3"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_palm_front_taxel_3" -> "link_palm_front_taxel_4"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 "link_palm_front_taxel_4" -> "link_palm_front_taxel_5"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
@@ -239,6 +253,6 @@ digraph G {
 "link_palm_front_taxel_7" -> "link_palm_front_taxel_8"[label=" Broadcaster: /jointState2tf_0\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
 edge [style=invis];
  subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1634510538.744614"[ shape=plaintext ] ;
+"Recorded at time: 1636580362.4869177"[ shape=plaintext ] ;
 }->"palm_link";
 }
