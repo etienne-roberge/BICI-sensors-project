@@ -231,11 +231,12 @@ void readSensorsValues()
                     sensorList[index].wasRead = true;
                 }
                 else //can't read sensor, increment number of try. If over 10, remove sensor from list.
+                //Added a little patch for now (never put sensor offline)
                 {
                     sensorList[index].nbReadTry += 1;
-                    if(sensorList[index].nbReadTry >= 10)
+                    if(sensorList[index].nbReadTry >= 5)
                     {
-                        sensorList[index].isOnline = false;
+                        sensorList[index].wasRead = true;
                     }
                 }
             }
