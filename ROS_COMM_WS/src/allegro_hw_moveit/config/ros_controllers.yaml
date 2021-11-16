@@ -33,30 +33,30 @@ joint_state_controller:
   publish_rate: 50
 controller_list:
   []
-middle_controller:
+thumb_controller:
   type: position_controllers/JointPositionController
   joints:
-    - joint_4_0
-    - joint_5_0
-    - joint_6_0
-    - joint_7_0
+    - joint_12_0
+    - joint_13_0
+    - joint_14_0
+    - joint_15_0
   gains:
-    joint_4_0:
+    joint_12_0:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    joint_5_0:
+    joint_13_0:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    joint_6_0:
+    joint_14_0:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    joint_7_0:
+    joint_15_0:
       p: 100
       d: 1
       i: 1
