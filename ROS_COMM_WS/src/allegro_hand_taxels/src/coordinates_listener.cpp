@@ -15,11 +15,7 @@
 #define PTS_NUM 400
 std::ofstream myfile;
 using namespace std;
-tf2_ros::Buffer tfBuffer;
-tf2_ros::TransformListener *tfListener;
-geometry_msgs::TransformStamped taxel_1_trans, taxel_2_trans;
-float taxel_1_x, taxel_1_y, taxel_1_z, taxel_2_x, taxel_2_y, taxel_2_z;
-/*
+
 class Tactile_Sensor {
   public:
     uint8_t sensor_num;        // ID of the sensor
@@ -195,14 +191,14 @@ void callback(const serial_comm::TactileData msg){
 void saving_callback(const std_msgs::String msg){
     act_cmd = msg.data;
 }
-*/
+
 
 int main(int argc, char** argv){
     ros::init(argc, argv, "my_tf2_listener");
     ros::NodeHandle node;
     ros::Rate rate(1.0);
     tfListener = new tf2_ros::TransformListener(tfBuffer);
-    /*std::array<ros::Subscriber, NUM_SENSORS> subscribers;
+    std::array<ros::Subscriber, NUM_SENSORS> subscribers;
     myfile.open ("points_coordinates.csv");
     ros::Subscriber saving_subscriber; //A subscriber to the saving_activation command
     for (size_t i=0; i < subscribers.size(); i++)
@@ -218,43 +214,6 @@ int main(int argc, char** argv){
     markers_pub.publish(markers_array);
     ros::spinOnce();
     rate.sleep();
-    }*/
-    while(ros::ok()){
-            if ((tfBuffer.canTransform("taxel_1","palm_link", ros::Time(0))) && (tfBuffer.canTransform("taxel_2","palm_link", ros::Time(0)))) 
-       {
-           try{
-               taxel_1_trans = tfBuffer.lookupTransform("palm_link", "taxel_1", ros::Time(0));   
-               taxel_2_trans = tfBuffer.lookupTransform("palm_link", "taxel_2", ros::Time(0));                                                                                                                                               
-           }
-           catch (ros::Exception &ex) {
-            ROS_WARN("%s",ex.what());
-            ros::Duration(1.0).sleep();
-            continue;
-            }
-            //X axis coordinates
-            taxel_1_x = taxel_1_trans.transform.translation.x;
-            cout<< "Taxel 1 X Coordinate: " << taxel_1_x;
-            taxel_2_x = taxel_2_trans.transform.translation.x;
-            cout<< " ............ Taxel 2 X Coordinate: " << taxel_2_x << endl;
-            //Y axis coordinates  
-            taxel_1_y = taxel_1_trans.transform.translation.y;
-            cout<< "Taxel 1 Y Coordinate: " << taxel_1_y;
-            taxel_2_y = taxel_2_trans.transform.translation.y;
-            cout<< " ............ Taxel 2 Y Coordinate: " << taxel_2_y << endl;
-            //Z axis coordinates  
-            taxel_1_z = taxel_1_trans.transform.translation.z;
-            cout<< "Taxel 1 Z Coordinate: " << taxel_1_z;
-            taxel_2_z = taxel_2_trans.transform.translation.z;
-            cout<< " ............ Taxel 2 Z Coordinate: " << taxel_2_z << endl;
-
-
-
-
-       }
-       rate.sleep();
-
     }
-
-
         return 0;
         };

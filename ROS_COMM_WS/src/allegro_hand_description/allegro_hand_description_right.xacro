@@ -148,6 +148,111 @@
 <joint_properties friction="0.0"/>
 </joint>
 
+<link name="link_proximal_back_bracket">
+<visual>
+<origin xyz="-0.0291 -0.0037 0.014" rpy="3.14159 -2.87455e-18 -1.7705e-33" />
+<geometry>
+<mesh filename="package://allegro_hand_description/meshes/proximal_back.stl"/>
+</geometry>
+<material name="proximal_back_material">
+<color rgba="1 0.756863 0.054902 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.0291 -0.0037 0.014" rpy="3.14159 -2.87455e-18 -1.7705e-33" />
+<geometry>
+<mesh filename="package://allegro_hand_description/meshes/proximal_back.stl"/>
+</geometry>
+<material name="proximal_back_material">
+<color rgba="1 0.756863 0.054902 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.00229579 0.00603324 0.0192417" rpy="0 0 0"/>
+<mass value="0.00681742" />
+<inertia ixx="1.33469e-06" ixy="-1.25087e-08"  ixz="-1.65721e-09" iyy="2.12223e-06" iyz="3.02232e-07" izz="1.86525e-06" />
+</inertial>
+</link>
+
+<link name="proximal_back_sensor">
+<visual>
+<origin xyz="0.0136 0.0127 -0.0028" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://allegro_hand_description/meshes/proximal_back_fpcb.stl"/>
+</geometry>
+<material name="proximal_back_fpcb_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0.0136 0.0127 -0.0028" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://allegro_hand_description/meshes/proximal_back_fpcb.stl"/>
+</geometry>
+<material name="proximal_back_fpcb_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.000514151 0.0153289 -0.0298338" rpy="0 0 0"/>
+<mass value="0.00110296" />
+<inertia ixx="3.62763e-07" ixy="-7.11341e-10"  ixz="5.1761e-08" iyy="2.17583e-07" iyz="5.50926e-10" izz="4.40838e-07" />
+</inertial>
+</link>
+
+<link name="taxel_0">
+<visual>
+<origin xyz="0.0017 0.00145 -0.0003" rpy="-7.33316e-19 2.77733e-19 1.75407e-17" />
+<geometry>
+<mesh filename="package://allegro_hand_description/meshes/part_1.stl"/>
+</geometry>
+<material name="part_1_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0.0017 0.00145 -0.0003" rpy="-7.33316e-19 2.77733e-19 1.75407e-17" />
+<geometry>
+<mesh filename="package://allegro_hand_description/meshes/part_1.stl"/>
+</geometry>
+<material name="part_1_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.0017 0.00145 -0.00015" rpy="0 0 0"/>
+<mass value="5.916e-06" />
+<inertia ixx="4.1905e-12" ixy="1.21275e-28"  ixz="-2.2582e-30" iyy="5.74345e-12" iyz="-1.14331e-29" izz="9.84521e-12" />
+</inertial>
+</link>
+
+<joint name="joint_taxel_0" type="fixed">
+<origin xyz="-0.00479726 0.0121623 -0.0519609" rpy="0.0101926 -1.5708 0" />
+<parent link="proximal_back_sensor" />
+<child link="taxel_0" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="joint_proximal_back_sensor" type="fixed">
+<origin xyz="-0.0319 0.0099 0.0013" rpy="1.5708 5.34573e-31 -1.5708" />
+<parent link="link_proximal_back_bracket" />
+<child link="proximal_back_sensor" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="joint_proximal_back_bracket" type="fixed">
+<origin xyz="0.0291 -0.0037 0.0253" rpy="3.14159 2.92735e-18 -1.92022e-29" />
+<parent link="link_1" />
+<child link="link_proximal_back_bracket" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
 <joint name="joint_1_0" type="revolute">
 <origin xyz="-6.93889e-18 -0.0119 0.02545" rpy="-1.5708 -1.5708 0" />
 <parent link="link_0" />
