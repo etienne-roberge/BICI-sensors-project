@@ -29,6 +29,12 @@ ROS_COMM_WS/devel/
 
 ROS_COMM_WS/.vscode/
 
+ROS_COMM_WS/libBHand_64
+
+ROS_COMM_WS/PCAN-Basic_Linux-4.5.2
+
+ROS_COMM_WS/peak-linux-driver-8.13.0
+
 Allegro_Hand_CAD_Files/
 
 UR5/catkin_ws/build

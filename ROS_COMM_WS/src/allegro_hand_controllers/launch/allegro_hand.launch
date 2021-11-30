@@ -25,7 +25,7 @@
   -->
 
 
-  <!-- The inclusion of which_hand in the zero.yaml file has been deprecated.
+  <!-- The inclusion oroslaunch allegro_hand_controllers allegro_hand.launch HAND:=right CONTROLLER:=torque VISUALIZE:=truef which_hand in the zero.yaml file has been deprecated.
        Which hand (left/right) must now be specified as an argument when launching the Allegro Hand
        as an input for both the robot_description and for the grasping library controllers. -->
   <arg name="HAND"/>
@@ -130,11 +130,12 @@
   </node>
 
   <!-- Joint States (angles) to Joint Transforms -->
+
   <!--
   <node name="jointState2tf_$(arg NUM)"
         pkg="robot_state_publisher"
         output="screen" 
-        type="robot_state_publisher">
+        type="robot_state_publisher"/>
   -->
     <!-- Comment out the next line if you want to listen to the tf transformations rather than visualizing them in rviz-->
   <!--  
@@ -188,7 +189,6 @@
         type="sensor_parser">
   </node> 
   -->
-
 
 
 

@@ -7,6 +7,63 @@ Note: Taken from ur5_ros_control.launch in ur_modern_driver.
       Velocity-based controller gives a much smoother robot mouvement than the position-based controller.
 -->
 <launch>
+	<!-- Allegro Hand Section-->
+	<arg name="HAND" default="right"/>
+  	<arg name="NUM" default="0"/>
+    <arg name="CONTROLLER" default="torque"/>
+    <arg name="POLLING" default="true"/>
+	<arg name="RESPAWN" default="false"/>
+	<arg name="PARAMS_DIR" default="$(find allegro_hand_parameters)" />
+	<arg name="ZEROS" default="$(arg PARAMS_DIR)/zero.yaml"/>
+	<arg name="AUTO_CAN" default="true" />
+    <arg name="CAN_DEVICE" default="/dev/pcanusb1" />
+  <!-- Use the joint_state_publisher for *commanded* joint angles. -->
+  	<arg name="JSP_GUI" default="false"/>
+  <!-- Allegro Hand controller and communication node. -->
+  <node name="allegroHand_$(arg HAND)_$(arg NUM)"
+        pkg="allegro_hand_controllers"
+        type="allegro_node_$(arg CONTROLLER)"
+        output="screen"
+        clear_params="true"
+        respawn="$(arg RESPAWN)"
+        respawn_delay="2"
+        args="$(arg POLLING)" >
+
+    <!-- Remapping of topics into enumerated allegroHand_# namespace -->
+    <!--
+    <remap from="allegroHand/joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
+    -->
+    <remap from="allegroHand/joint_cmd" to="allegroHand_$(arg NUM)/joint_cmd"/>
+    <remap from="allegroHand/lib_cmd" to="allegroHand_$(arg NUM)/lib_cmd"/>
+    <remap from="allegroHand/torque_cmd" to="allegroHand_$(arg NUM)/torque_cmd"/>
+    <remap from="allegroHand/envelop_torque" to="allegroHand_$(arg NUM)/envelop_torque"/>
+    <remap from="allegroHand/joint_current_states" to="allegroHand_$(arg NUM)/joint_current_states"/>
+    <remap from="allegroHand/joint_desired_states" to="allegroHand_$(arg NUM)/joint_desired_states"/>
+
+    
+
+    <!--parameters are within the scope of the hand node so that multiple hands can be run at the same time -->
+    <rosparam file="$(arg ZEROS)" command="load" />
+
+    <rosparam file="$(arg PARAMS_DIR)/gains_pd.yaml" command="load" />
+    <rosparam file="$(arg PARAMS_DIR)/gains_velSat.yaml" command="load" />
+    <rosparam file="$(arg PARAMS_DIR)/initial_position.yaml" command="load" />
+
+    <!-- Set the CAN channel automatically (using detect_pcan.py) if the
+         AUTO_CAN parameter is true, otherwise use the CAN_DEVICE
+         argument. NOTE: To manually set the can device, you must *also* set
+         AUTO_CAN:=false. -->
+    <param name="/comm/CAN_CH" value="$(arg CAN_DEVICE)"
+           unless="$(arg AUTO_CAN)" />
+    <param name="/comm/CAN_CH"
+           command="$(find allegro_hand_description)/scripts/detect_pcan.py"
+           if="$(arg AUTO_CAN)" />
+
+    <param name="/hand_info/which_hand" value="$(arg HAND)" /> <!-- See HAND arg above -->
+  </node>
+
+<!-- End of Allegro Hand Section-->
+
 	<arg name="dollar" value="$"/>
 	
 	<!-- Robot -->
@@ -63,6 +120,7 @@ Note: Taken from ur5_ros_control.launch in ur_modern_driver.
 	<param name="robot_description" command="$(find xacro)/xacro '$(find coro_descriptions)/urdf/workstations/$(arg robot)_workstation.urdf.xacro'"/>
 
 	<!-- Load hardware interface -->
+	<remap from="joint_states" to="ur5/joint_states" />
 	<node if="$(arg cb2)" name="ur_hardware_interface" pkg="ur_modern_driver" type="ur_driver" output="log" launch-prefix="$(arg launch_prefix)">
 		<param name="robot_ip_address" type="str" value="$(arg robot_ip)"/>
 		<param name="reverse_ip_address" type="str" value="$(arg reverse_ip)"/>
@@ -119,11 +177,6 @@ Note: Taken from ur5_ros_control.launch in ur_modern_driver.
 - "force_torque_sensor_controller"
 - "robot_status_controller"</rosparam>
 	</node>
-
-  <!-- Make sure to start this in the namespace of the hardware interface -->
-  <node unless="$(arg cb2)" ns="ur_hardware_interface" name="ur_robot_state_helper" pkg="ur_robot_driver" type="robot_state_helper" respawn="false" output="screen"/>
-	
-	<!-- ************************************************* -->
 	<!-- Load tool communication bridge (CB3/eSeries only) -->
 	<!-- ************************************************* -->
 	<node unless="$(arg cb2)" name="ur_tool_communication_bridge" pkg="ur_robot_driver" type="tool_communication" respawn="false" output="screen">
@@ -141,7 +194,7 @@ Note: Taken from ur5_ros_control.launch in ur_modern_driver.
 	<arg if="$(arg cb2)" name="gripper_comport" default="/dev/ttyUSB0"/>
     <arg if="$(arg cb2)" name="baud" default="115200"/>
 	<arg unless="$(arg cb2)" name="gripper_comport" default="$(arg tool_device_name)"/>
-    <arg unless="$(arg cb2)" name="baud" default="$(arg tool_baud_rate)"/>
+    <arg unless="$(arg cb2)" name="baud" default="$(robot_starg tool_baud_rate)"/>
 	-->       
     <!-- Robotiq 85 ROS Driver -->
 	<!--
@@ -162,16 +215,20 @@ Note: Taken from ur5_ros_control.launch in ur_modern_driver.
 	</node>
 	-->
 	<!-- *************************** -->
+  <node name="joint_states_merger" pkg="allegro_hand_taxels" type="joint_states_merger" output="screen"/>
+
 	<!-- Start Robot_State_Publisher -->
 	<!-- *************************** -->
+	<remap from="joint_states" to="ur5_allegro/joint_states" />
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
         <param name="robot_description" value="robot_description"/>
 	</node>
-	
+
 	<!-- ******************* -->
   	<!-- Then, launch Moveit -->
   	<!-- ******************* -->
   	<!-- Run the main MoveIt executable --> 
+	<!--
   	<include file="$(arg dollar)$(arg moveit_config_path)/launch/move_group.launch">
   		<arg name="publish_monitored_planning_scene" value="true"/>
 		<arg name="allow_trajectory_execution" value="true"/>
@@ -181,14 +238,18 @@ Note: Taken from ur5_ros_control.launch in ur_modern_driver.
 		<arg name="info" value="true"/>
 		<arg name="debug" default="$(arg debug)"/>
   	</include>
-  	
+  	-->
   	<!-- ******** -->
   	<!-- And Rviz -->
   	<!-- ******** -->
   	<!-- Run Rviz and load the default config to see the state of the move_group node -->
+	<!--
   	<include file="$(arg dollar)$(arg moveit_config_path)/launch/moveit_rviz.launch">
   		<arg name="rviz_config" default="$(arg dollar)$(arg moveit_config_path)/launch/moveit.rviz"/>
 		<arg name="debug" value="$(arg debug)"/>
 	</include>
+	-->
+
+	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find coro_workstations)/launch/rviz_config.rviz" />
 	
 </launch>

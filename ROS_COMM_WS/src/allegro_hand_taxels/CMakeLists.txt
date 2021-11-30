@@ -9,6 +9,7 @@ set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 find_package(catkin REQUIRED COMPONENTS
   tf2_ros
   geometry_msgs
+  sensor_msgs
   std_msgs
   roscpp
   message_generation
@@ -31,7 +32,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES allegro_hand_taxels
-  CATKIN_DEPENDS   tf2_ros geometry_msgs visualization_msgs roscpp std_msgs message_runtime
+  CATKIN_DEPENDS   tf2_ros geometry_msgs sensor_msgs visualization_msgs roscpp std_msgs message_runtime
 #  DEPENDS
 )
 
@@ -48,9 +49,13 @@ include_directories(
 add_executable(coordinates_listener src/coordinates_listener.cpp)
 add_executable(saving_node src/saving_node.cpp)
 add_executable(sensor_emulator src/sensor_emulator.cpp)
+add_executable(joint_states_merger src/joint_states_merger.cpp)
+add_executable(joint_states_saver src/joint_states_saver.cpp)
 target_link_libraries(coordinates_listener ${catkin_LIBRARIES})
 target_link_libraries(saving_node ${catkin_LIBRARIES})
 target_link_libraries(sensor_emulator ${catkin_LIBRARIES})
+target_link_libraries(joint_states_merger ${catkin_LIBRARIES})
+target_link_libraries(joint_states_saver ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############

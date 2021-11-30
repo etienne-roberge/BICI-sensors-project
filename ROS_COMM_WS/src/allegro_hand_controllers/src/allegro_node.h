@@ -22,7 +22,7 @@ class AllegroHandDrv;
 #define ALLEGRO_CONTROL_TIME_INTERVAL 0.003
 
 // Topic names: current & desired JointState, named grasp to command.
-const std::string JOINT_STATE_TOPIC = "/joint_states";
+const std::string JOINT_STATE_TOPIC = "allegro/joint_states";
 const std::string DESIRED_STATE_TOPIC = "allegroHand/joint_cmd";
 const std::string LIB_CMD_TOPIC = "allegroHand/lib_cmd";
 
