@@ -80,11 +80,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        columns_link_beam:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         flange:
           Alpha: 1
           Show Axes: false
@@ -94,12 +89,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        ft_sensor_mounting_plate:
+        ft300:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        fts150:
+        ft_sensor_mounting_plate:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -189,15 +184,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        middle_robot_fix:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        middle_robot_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         palm_link:
           Alpha: 1
           Show Axes: false
@@ -208,21 +194,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        robot_column:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         shoulder_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        table_base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        table_base_link:
+        table:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -237,16 +214,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
         upper_arm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        workspace_column:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        workspace_table:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -280,7 +247,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -304,7 +271,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.0205273628234863
+      Distance: 5.070405960083008
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -320,9 +287,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.785398006439209
+      Pitch: 0.9503979682922363
       Target Frame: <Fixed Frame>
-      Yaw: 0.785398006439209
+      Yaw: 4.58858585357666
     Saved: ~
 Window Geometry:
   Displays:
