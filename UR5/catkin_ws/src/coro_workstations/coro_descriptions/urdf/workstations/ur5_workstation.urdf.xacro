@@ -6,7 +6,6 @@
 	<link name="world"/>
 
 <!-- Table -->
-<!--
     <link name="table">
         <visual>
             <geometry>
@@ -38,10 +37,8 @@
 		<child link="table"/>
 		<origin xyz="0 0 0.876" rpy="0 0 0"/>
 	</joint>
--->
 
 <!-- Wall -->
-<!--
     <link name="wall">
         <visual>
             <geometry>
@@ -71,16 +68,16 @@
 	<joint name="wall_to_table" type="fixed">
 		<parent link="table"/>
 		<child link="wall"/>
-		<origin xyz="-0.2 0.43 0" rpy="0 0 0"/>
+		<origin xyz="0.2 -0.43 0" rpy="0 0 0"/>
 	</joint>
--->
+    
 	<!-- ROBOT -->
 	<xacro:include filename="$(find ur_description)/urdf/inc/ur5_macro.xacro"/>
 	<xacro:ur5_robot prefix="" kinematics_parameters_file="$(arg kinematics_config)"/>
 	<joint name="robot_to_table" type="fixed">
 		<parent link="table"/>
 		<child link="base_link"/>
-		<origin xyz="0.405 0 0" rpy="0 0 0"/>
+		<origin xyz="0.405 0 0" rpy="0 0 -0.401426"/>
 	</joint>
 
 	<!-- FT300 Sensor Mounting Plate-->
@@ -187,7 +184,7 @@
 	<joint name="hand_to_bracket" type="fixed">
 		<parent link="allegro_ur5_bracket"/>
 		<child link="palm_link"/>
-		<origin xyz="0 0.0113 0.105" rpy="0 0 3.14"/>
+		<origin xyz="0 0.0084 0.105" rpy="0 0 3.14"/>
 	</joint>	
 	<!-- GRIPPER COUPLING -->
 	<!--

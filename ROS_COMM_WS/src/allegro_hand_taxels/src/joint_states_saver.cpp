@@ -15,6 +15,17 @@ void callback(const sensor_msgs::JointState::ConstPtr &msg_in) {
     myfile << "" << ',';
     for (size_t i = 0; i < js_merged.name.size(); i++)
   {
+    if (js_merged.name[i] == "shoulder_lift_joint")
+    {
+      myfile << "shoulder_joint" << ',';
+      continue;
+    }
+    if (js_merged.name[i] == "shoulder_pan_joint")
+    {
+      myfile << "base_joint" << ',';
+      continue;
+    }   
+
     myfile << js_merged.name[i] << ',';
   }
   myfile << '\n';
@@ -48,7 +59,7 @@ int main(int argc, char **argv){
 
   ros::NodeHandle nh;
   myfile.open ("joints_data.csv");
-  ros::Subscriber sub_ur5 = nh.subscribe<sensor_msgs::JointState>( "ur5_allegro/joint_states", 1, &callback);
+  ros::Subscriber sub_ur5 = nh.subscribe<sensor_msgs::JointState>( "ur5/joint_states", 1, &callback);
 
   ros::spin();
   if(!ros::ok()){
