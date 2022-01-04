@@ -17,6 +17,7 @@
 #include <boost/circular_buffer.hpp>
 
 #define PRINT
+// #define TEST
 
 int n;// The number of bytes read
 const int buffer_size = 58; // largest possible message size
@@ -154,10 +155,11 @@ int main (int argc, char** argv)
             }
         }
 
-
-        while (cb[start_index] != 1)
+        int count = 0;
+        while ((cb[start_index] != 1) && (count < cb_size))
         {
             start_index = (start_index + 1) % cb_size;
+            count++;
         }
 
         end_index = std::distance(cb.begin(), cb.end()) - 1; // this will just be cb_size after a few seconds...
@@ -214,6 +216,7 @@ int main (int argc, char** argv)
                         #ifdef PRINT
                         printf("BAD SENSOR NUM: start_byte = %i, checksum = %i, sensor_num=: %i \n", cb[start_index], cb[start_index+1], sensor_num);
                         #endif
+                        // start_index = (start_index + message_length) % cb_size;
                     }
 
                     // parse_message(cb, start_index, message_length, publishers);
