@@ -48,7 +48,7 @@ void parse_message(boost::circular_buffer<uint8_t> &cb, uint8_t start_index, uin
             //grab MSB of data for current taxel
             data_entry = (cb[start_index + i] << 8);
         }
-            
+
         // if i is even
         else
         {
@@ -56,7 +56,7 @@ void parse_message(boost::circular_buffer<uint8_t> &cb, uint8_t start_index, uin
             data_entry = data_entry | cb[start_index + i];
             // push byte into msg.data
             msg.data.push_back(data_entry);
-        } 
+        }
     }
 
     // publish the message to the appropriate topic
@@ -69,7 +69,7 @@ void parse_message(boost::circular_buffer<uint8_t> &cb, uint8_t start_index, uin
         publishers[sensor_num-NUM_SENSOR_MIN].publish(msg);
         msg.data.clear();
     }
-    else 
+    else
     {
         #ifdef PRINT
         printf("BAD SENSOR NUM: start_byte = %i, checksum = %i, sensor_num=: %i \n", cb[start_index], cb[start_index+1], sensor_num);
@@ -91,7 +91,7 @@ int main (int argc, char** argv)
 
      /* Open and Configure Serial Port */
     // open the serial port
-    int serial_port = open("/dev/ttyUSB1", O_RDWR); //The serial port has to be properly renamed in certain cases
+    int serial_port = open("/dev/ttyUSB0", O_RDONLY); //The serial port has to be properly renamed in certain cases
     
     // check for errors
     if (serial_port < 0) {
@@ -112,14 +112,14 @@ int main (int argc, char** argv)
     cfsetospeed(&tty, B115200);
 
     // configure VMIN and VTIME -- no blocking
-    tty.c_cc[VTIME] = 0;
+    tty.c_cc[VTIME] = 100;
     tty.c_cc[VMIN] = 0;
 
     // Setting other Port Stuff
     cfmakeraw(&tty);
 
     // Save tty settings, also checking for error
-    if (tcsetattr(serial_port, TCSANOW, &tty) != 0) 
+    if (tcsetattr(serial_port, TCSANOW, &tty) != 0)
     {
         printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
     }
@@ -132,6 +132,8 @@ int main (int argc, char** argv)
     int start_index = 0;
     uint16_t end_index;
 
+	cb[cb_size] =1;
+
     while(ros::ok())
     {
 
@@ -141,7 +143,7 @@ int main (int argc, char** argv)
         if ((start_index > (cb_size - 2*buffer_size)) || !cb.full())
         {
             n = read(serial_port, &read_buf, sizeof(read_buf));
-
+			std::cout << n << std::endl;
             // transfer data from read_buf into cb
             cb.insert(cb.end(), read_buf, read_buf + n);
 
@@ -157,7 +159,7 @@ int main (int argc, char** argv)
         {
             start_index = (start_index + 1) % cb_size;
         }
-        
+
         end_index = std::distance(cb.begin(), cb.end()) - 1; // this will just be cb_size after a few seconds...
         // as long as we have one more byte after the start byte
         if (start_index  < end_index) 
@@ -184,17 +186,17 @@ int main (int argc, char** argv)
                         if ((i % 2) != 0)
                         {
                             //grab MSB of data for current taxel
-                            data_entry = (cb[start_index + i] << 8);
+                            data_entry = (cb[start_index + i]);
                         }
-                            
+
                         // if i is even
                         else
                         {
                             // grab LSB of data for current taxel
-                            data_entry = data_entry | cb[start_index + i];
+                            data_entry = data_entry | (cb[start_index + i] << 8);
                             // push byte into msg.data
                             msg.data.push_back(data_entry);
-                        } 
+                        }
                     }
 
                     // publish the message to the appropriate topic
@@ -207,7 +209,7 @@ int main (int argc, char** argv)
                         publishers[sensor_num-NUM_SENSOR_MIN].publish(msg);
                         msg.data.clear();
                     }
-                    else 
+                    else
                     {
                         #ifdef PRINT
                         printf("BAD SENSOR NUM: start_byte = %i, checksum = %i, sensor_num=: %i \n", cb[start_index], cb[start_index+1], sensor_num);
